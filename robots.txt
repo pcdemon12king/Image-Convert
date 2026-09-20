@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://Image-ConverterSimple.com/sitemap.xml
+Sitemap: https://dashing-shortbread-78948d.netlify.app/sitemap.xml
