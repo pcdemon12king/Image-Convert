@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ImageConvert — Free Online Image Converter</title>
+
+    <meta
+        name="description"
+        content="Convert JPG, PNG and WebP images online for free. Compress and convert images directly in your browser."
+    >
+
+    <meta
+        name="keywords"
+        content="image converter, JPG to PNG, PNG to JPG, WebP converter, image compressor"
+    >
+
+    <meta name="theme-color" content="#ffffff">
+    <!-- icon added -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta property="og:title" content="ImageConvert — Free Online Image Converter">
+    <meta
+        property="og:description"
+        content="Convert and compress images instantly in your browser."
+    >
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="/" class="logo">
+        <span class="logo-icon">✦</span>
+        ImageConvert
+    </a>
+
+    <nav>
+        <a href="#converter">Converter</a>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+    </nav>
+
+    <button
+        class="theme-button"
+        id="themeButton"
+        aria-label="Toggle theme"
+    >
+        <span id="themeIcon">◐</span>
+    </button>
+
+</header>
+
+
+<main>
+
+<section class="hero">
+
+    <div class="hero-badge">
+        ⚡ Fast · Private · Free
+    </div>
+
+    <h1>
+        Convert your images
+        <span>beautifully.</span>
+    </h1>
+
+    <p>
+        Convert JPG, PNG and WebP images instantly.
+        Everything happens directly in your browser.
+    </p>
+
+</section>
+
+
+<section class="converter-section" id="converter">
+
+    <div class="converter-card">
+
+        <div
+            class="drop-zone"
+            id="dropZone"
+            tabindex="0"
+            role="button"
+            aria-label="Upload an image"
+        >
+
+            <div class="upload-icon">
+                ↑
+            </div>
+
+            <h2>Drop your image here</h2>
+
+            <p>
+                or click to browse from your device
+            </p>
+
+            <span class="file-types">
+                JPG · PNG · WebP
+            </span>
+
+            <input
+                type="file"
+                id="fileInput"
+                accept="image/jpeg,image/png,image/webp"
+                hidden
+            >
+
+        </div>
+
+
+        <div class="editor" id="editor">
+
+            <div class="preview-area">
+
+                <div class="preview-header">
+                    <span>Preview</span>
+                    <span id="fileName"></span>
+                </div>
+
+                <div class="image-container">
+                    <img
+                        id="previewImage"
+                        alt="Selected image preview"
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="controls">
+
+                <div class="control-group">
+
+                    <label for="format">
+                        Convert to
+                    </label>
+
+                    <select id="format">
+
+                        <option value="image/jpeg">
+                            JPG
+                        </option>
+
+                        <option value="image/png">
+                            PNG
+                        </option>
+
+                        <option value="image/webp">
+                            WebP
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="control-group">
+
+                    <div class="label-row">
+                        <label for="quality">
+                            Quality
+                        </label>
+
+                        <span id="qualityValue">
+                            90%
+                        </span>
+                    </div>
+
+                    <input
+                        type="range"
+                        id="quality"
+                        min="10"
+                        max="100"
+                        value="90"
+                    >
+
+                </div>
+
+
+                <div class="size-info">
+
+                    <div>
+                        <span>Original</span>
+                        <strong id="originalSize">—</strong>
+                    </div>
+
+                    <div>
+                        <span>Dimensions</span>
+                        <strong id="dimensions">—</strong>
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="convert-button"
+                    id="convertButton"
+                >
+                    Convert Image
+                    <span>→</span>
+                </button>
+
+
+                <button
+                    class="reset-button"
+                    id="resetButton"
+                >
+                    Choose another image
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="features" id="features">
+
+    <div class="section-heading">
+
+        <span>WHY IMAGECONVERT</span>
+
+        <h2>
+            Simple tools.
+            <br>
+            Powerful results.
+        </h2>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <article class="feature-card">
+
+            <div class="feature-icon">⚡</div>
+
+            <h3>Lightning fast</h3>
+
+            <p>
+                Your image is processed directly in your browser,
+                so there is no waiting for uploads.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">🔒</div>
+
+            <h3>Private by design</h3>
+
+            <p>
+                Your images stay on your device during conversion.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">✨</div>
+
+            <h3>Easy to use</h3>
+
+            <p>
+                Drop an image, choose a format, and download
+                your converted file.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<section class="how-section" id="how-it-works">
+
+    <div class="section-heading">
+
+        <span>HOW IT WORKS</span>
+
+        <h2>
+            Three simple steps.
+        </h2>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+            <span>01</span>
+            <h3>Upload</h3>
+            <p>Select or drag your image into the converter.</p>
+        </div>
+
+        <div class="step">
+            <span>02</span>
+            <h3>Customize</h3>
+            <p>Choose JPG, PNG or WebP and adjust quality.</p>
+        </div>
+
+        <div class="step">
+            <span>03</span>
+            <h3>Download</h3>
+            <p>Convert your image and download the result.</p>
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">
+        <span class="logo-icon">✦</span>
+        ImageConvert
+    </div>
+
+    <p>
+        Fast image conversion, directly in your browser.
+    </p>
+
+    <p class="copyright">
+        © 2026 ImageConvert
+    </p>
+
+</footer>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
