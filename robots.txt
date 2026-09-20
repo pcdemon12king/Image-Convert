@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dashing-shortbread-78948d.netlify.app/sitemap.xml
+Sitemap: https://pcdemon12king.github.io/Image-Convert/sitemap.xml
