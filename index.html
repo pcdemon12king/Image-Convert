@@ -1,346 +1,1204 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ImageConvert — Free Online Image Converter</title>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <meta
-        name="description"
-        content="Convert JPG, PNG and WebP images online for free. Compress and convert images directly in your browser."
-    >
-    <meta name="google-site-verification" content="Ke0LlVVn8psN2QRHMZ4OV7BhgLKflqogcNzxfxWhRdw" />
-    <meta
-        name="keywords"
-        content="image converter, JPG to PNG, PNG to JPG, WebP converter, image compressor"
-    >
+<title>ImageConvert — Free Image & Video Converter Online</title>
 
-    <meta name="theme-color" content="#ffffff">
-    <!-- icon added -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <meta property="og:title" content="ImageConvert — Free Online Image Converter">
-    <meta
-        property="og:description"
-        content="Convert and compress images instantly in your browser."
-    >
-    <meta property="og:type" content="website">
+<meta
+    name="description"
+    content="Convert JPG, PNG and WebP images online for free. Convert and process supported video formats directly in your browser with ImageConvert."
+>
 
-    <link rel="stylesheet" href="style.css">
+<meta
+    name="google-site-verification"
+    content="Ke0LlVVn8psN2QRHMZ4OV7BhgLKflqogcNzxfxWhRdw"
+>
+
+<meta
+    name="keywords"
+    content="image converter, JPG to PNG, PNG to JPG, JPG converter, PNG converter, WebP converter, image compressor, video converter, online video converter"
+>
+
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#ffffff">
+
+<!-- Favicon -->
+<link
+    rel="icon"
+    href="favicon.ico"
+    type="image/x-icon"
+>
+
+<!-- Open Graph -->
+<meta
+    property="og:title"
+    content="ImageConvert — Free Image & Video Converter Online"
+>
+
+<meta
+    property="og:description"
+    content="Convert images and supported video formats directly in your browser. Fast, simple and privacy-focused."
+>
+
+<meta
+    property="og:type"
+    content="website"
+>
+
+<meta
+    property="og:site_name"
+    content="ImageConvert"
+>
+
+<!-- Twitter / X -->
+<meta
+    name="twitter:card"
+    content="summary"
+>
+
+<meta
+    name="twitter:title"
+    content="ImageConvert — Free Image & Video Converter"
+>
+
+<meta
+    name="twitter:description"
+    content="Convert images and supported video formats directly in your browser."
+>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- WebApplication structured data -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ImageConvert",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Free browser-based image and supported video conversion tool.",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+    },
+    "featureList": [
+        "JPG to PNG conversion",
+        "PNG to JPG conversion",
+        "WebP conversion",
+        "Image quality control",
+        "Browser-based processing",
+        "Video conversion tools"
+    ]
+}
+</script>
+
+<!-- FAQ structured data -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Is ImageConvert free to use?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. ImageConvert is designed as a free browser-based conversion tool."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Are my images uploaded to a server?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ImageConvert is designed to process supported files directly in your browser."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Can I convert JPG to PNG?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Upload a JPG image, select PNG as the output format and convert it."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Can I convert PNG to JPG?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Upload a PNG image and select JPG as the output format."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Can I convert images to WebP?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. ImageConvert includes WebP as an available image output format."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Does ImageConvert support video conversion?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ImageConvert includes a browser-based video conversion interface for supported video formats. Available conversion capabilities depend on browser support."
+            }
+        }
+    ]
+}
+</script>
+
+
 </head>
 
 <body>
 
 <header class="navbar">
 
-    <a href="/" class="logo">
-        <span class="logo-icon">✦</span>
-        ImageConvert
-    </a>
 
-    <nav>
-        <a href="#converter">Converter</a>
-        <a href="#features">Features</a>
-        <a href="#how-it-works">How it works</a>
-    </nav>
+<a href="./" class="logo" aria-label="ImageConvert home">
+    <span class="logo-icon" aria-hidden="true">✦</span>
+    ImageConvert
+</a>
 
-    <button
-        class="theme-button"
-        id="themeButton"
-        aria-label="Toggle theme"
-    >
-        <span id="themeIcon">◐</span>
-    </button>
+<nav aria-label="Main navigation">
+    <a href="#converter">Image Converter</a>
+    <a href="#video-converter">Video Converter</a>
+    <a href="#features">Features</a>
+    <a href="#how-it-works">How it works</a>
+    <a href="#faq">FAQ</a>
+</nav>
+
+<button
+    class="theme-button"
+    id="themeButton"
+    type="button"
+    aria-label="Toggle theme"
+>
+    <span id="themeIcon" aria-hidden="true">◐</span>
+</button>
+
 
 </header>
 
-
 <main>
+
+<!-- HERO -->
 
 <section class="hero">
 
-    <div class="hero-badge">
-        ⚡ Fast · Private · Free
-    </div>
 
-    <h1>
-        Convert your images
-        <span>beautifully.</span>
-    </h1>
+<div class="hero-badge">
+    ⚡ Fast · Private · Free
+</div>
+
+<h1>
+    Convert your
+    <span>images & videos.</span>
+</h1>
+
+<p>
+    Convert JPG, PNG and WebP images with simple quality controls.
+    Explore browser-based video conversion for supported formats.
+    Your files are processed locally whenever browser capabilities allow.
+</p>
+
+<div class="hero-actions">
+
+    <a
+        href="#converter"
+        class="hero-button primary"
+    >
+        Convert an image
+        <span aria-hidden="true">→</span>
+    </a>
+
+    <a
+        href="#video-converter"
+        class="hero-button secondary"
+    >
+        Video converter
+    </a>
+
+</div>
+
+
+</section>
+
+<!-- IMAGE CONVERTER -->
+
+<section
+    class="converter-section"
+    id="converter"
+    aria-labelledby="image-converter-title"
+>
+
+
+<div class="section-heading">
+
+    <span>IMAGE CONVERTER</span>
+
+    <h2 id="image-converter-title">
+        JPG, PNG and WebP conversion
+    </h2>
 
     <p>
-        Convert JPG, PNG and WebP images instantly.
-        Everything happens directly in your browser.
+        Convert images directly in your browser without creating
+        an account or sending supported files to a server.
     </p>
 
-</section>
+</div>
 
 
-<section class="converter-section" id="converter">
+<div class="converter-card">
 
-    <div class="converter-card">
+    <div
+        class="drop-zone"
+        id="dropZone"
+        tabindex="0"
+        role="button"
+        aria-label="Upload an image"
+    >
 
         <div
-            class="drop-zone"
-            id="dropZone"
-            tabindex="0"
-            role="button"
-            aria-label="Upload an image"
+            class="upload-icon"
+            aria-hidden="true"
+        >
+            ↑
+        </div>
+
+        <h2>Drop your image here</h2>
+
+        <p>
+            or click to browse from your device
+        </p>
+
+        <span class="file-types">
+            JPG · PNG · WebP
+        </span>
+
+        <input
+            type="file"
+            id="fileInput"
+            accept="image/jpeg,image/png,image/webp"
+            hidden
         >
 
-            <div class="upload-icon">
-                ↑
+    </div>
+
+
+    <div
+        class="editor"
+        id="editor"
+        aria-live="polite"
+    >
+
+        <div class="preview-area">
+
+            <div class="preview-header">
+                <span>Preview</span>
+                <span id="fileName"></span>
             </div>
 
-            <h2>Drop your image here</h2>
+            <div class="image-container">
 
-            <p>
-                or click to browse from your device
-            </p>
+                <img
+                    id="previewImage"
+                    alt="Selected image preview"
+                >
 
-            <span class="file-types">
-                JPG · PNG · WebP
-            </span>
-
-            <input
-                type="file"
-                id="fileInput"
-                accept="image/jpeg,image/png,image/webp"
-                hidden
-            >
+            </div>
 
         </div>
 
 
-        <div class="editor" id="editor">
+        <div class="controls">
 
-            <div class="preview-area">
+            <div class="control-group">
 
-                <div class="preview-header">
-                    <span>Preview</span>
-                    <span id="fileName"></span>
-                </div>
+                <label for="format">
+                    Convert to
+                </label>
 
-                <div class="image-container">
-                    <img
-                        id="previewImage"
-                        alt="Selected image preview"
-                    >
-                </div>
+                <select id="format">
+
+                    <option value="image/jpeg">
+                        JPG
+                    </option>
+
+                    <option value="image/png">
+                        PNG
+                    </option>
+
+                    <option value="image/webp">
+                        WebP
+                    </option>
+
+                </select>
 
             </div>
 
 
-            <div class="controls">
+            <div class="control-group">
 
-                <div class="control-group">
+                <div class="label-row">
 
-                    <label for="format">
-                        Convert to
+                    <label for="quality">
+                        Quality
                     </label>
 
-                    <select id="format">
-
-                        <option value="image/jpeg">
-                            JPG
-                        </option>
-
-                        <option value="image/png">
-                            PNG
-                        </option>
-
-                        <option value="image/webp">
-                            WebP
-                        </option>
-
-                    </select>
+                    <span id="qualityValue">
+                        90%
+                    </span>
 
                 </div>
 
-
-                <div class="control-group">
-
-                    <div class="label-row">
-                        <label for="quality">
-                            Quality
-                        </label>
-
-                        <span id="qualityValue">
-                            90%
-                        </span>
-                    </div>
-
-                    <input
-                        type="range"
-                        id="quality"
-                        min="10"
-                        max="100"
-                        value="90"
-                    >
-
-                </div>
-
-
-                <div class="size-info">
-
-                    <div>
-                        <span>Original</span>
-                        <strong id="originalSize">—</strong>
-                    </div>
-
-                    <div>
-                        <span>Dimensions</span>
-                        <strong id="dimensions">—</strong>
-                    </div>
-
-                </div>
-
-
-                <button
-                    class="convert-button"
-                    id="convertButton"
+                <input
+                    type="range"
+                    id="quality"
+                    min="10"
+                    max="100"
+                    value="90"
+                    aria-label="Image quality"
                 >
-                    Convert Image
-                    <span>→</span>
-                </button>
-
-
-                <button
-                    class="reset-button"
-                    id="resetButton"
-                >
-                    Choose another image
-                </button>
 
             </div>
 
+
+            <div class="size-info">
+
+                <div>
+                    <span>Original</span>
+                    <strong id="originalSize">—</strong>
+                </div>
+
+                <div>
+                    <span>Dimensions</span>
+                    <strong id="dimensions">—</strong>
+                </div>
+
+            </div>
+
+
+            <button
+                class="convert-button"
+                id="convertButton"
+                type="button"
+            >
+                Convert Image
+                <span aria-hidden="true">→</span>
+            </button>
+
+
+            <button
+                class="reset-button"
+                id="resetButton"
+                type="button"
+            >
+                Choose another image
+            </button>
+
         </div>
 
     </div>
+
+</div>
+
 
 </section>
 
+<!-- IMAGE CONVERSION TYPES -->
 
-<section class="features" id="features">
-
-    <div class="section-heading">
-
-        <span>WHY IMAGECONVERT</span>
-
-        <h2>
-            Simple tools.
-            <br>
-            Powerful results.
-        </h2>
-
-    </div>
+<section
+    class="conversion-types"
+    id="image-formats"
+    aria-labelledby="conversion-types-title"
+>
 
 
-    <div class="feature-grid">
+<div class="section-heading">
 
-        <article class="feature-card">
+    <span>POPULAR CONVERSIONS</span>
 
-            <div class="feature-icon">⚡</div>
+    <h2 id="conversion-types-title">
+        Convert images between popular formats
+    </h2>
 
-            <h3>Lightning fast</h3>
-
-            <p>
-                Your image is processed directly in your browser,
-                so there is no waiting for uploads.
-            </p>
-
-        </article>
+</div>
 
 
-        <article class="feature-card">
+<div class="conversion-grid">
 
-            <div class="feature-icon">🔒</div>
+    <article class="conversion-card">
 
-            <h3>Private by design</h3>
+        <div class="conversion-icon">
+            JPG → PNG
+        </div>
 
-            <p>
-                Your images stay on your device during conversion.
-            </p>
+        <h3>JPG to PNG</h3>
 
-        </article>
+        <p>
+            Convert JPG and JPEG images to PNG when you need
+            a widely supported lossless image format.
+        </p>
+
+        <a href="#converter">
+            Convert JPG to PNG →
+        </a>
+
+    </article>
 
 
-        <article class="feature-card">
+    <article class="conversion-card">
 
-            <div class="feature-icon">✨</div>
+        <div class="conversion-icon">
+            PNG → JPG
+        </div>
 
-            <h3>Easy to use</h3>
+        <h3>PNG to JPG</h3>
 
-            <p>
-                Drop an image, choose a format, and download
-                your converted file.
-            </p>
+        <p>
+            Convert PNG images to JPG for compatible,
+            compact image files suitable for many websites
+            and applications.
+        </p>
 
-        </article>
+        <a href="#converter">
+            Convert PNG to JPG →
+        </a>
 
-    </div>
+    </article>
+
+
+    <article class="conversion-card">
+
+        <div class="conversion-icon">
+            IMG → WebP
+        </div>
+
+        <h3>Image to WebP</h3>
+
+        <p>
+            Convert supported images to WebP and adjust
+            the output quality using the converter controls.
+        </p>
+
+        <a href="#converter">
+            Convert to WebP →
+        </a>
+
+    </article>
+
+</div>
+
 
 </section>
 
+<!-- VIDEO CONVERTER -->
 
-<section class="how-section" id="how-it-works">
+<section
+    class="video-section"
+    id="video-converter"
+    aria-labelledby="video-converter-title"
+>
 
-    <div class="section-heading">
 
-        <span>HOW IT WORKS</span>
+<div class="section-heading">
 
-        <h2>
-            Three simple steps.
-        </h2>
+    <span>VIDEO CONVERTER</span>
+
+    <h2 id="video-converter-title">
+        Convert supported video files
+    </h2>
+
+    <p>
+        Choose a supported video file and prepare it for
+        browser-based conversion. Actual input and output
+        support depends on your browser.
+    </p>
+
+</div>
+
+
+<div class="video-converter-card">
+
+    <div
+        class="video-drop-zone"
+        id="videoDropZone"
+        tabindex="0"
+        role="button"
+        aria-label="Upload a video"
+    >
+
+        <div
+            class="upload-icon"
+            aria-hidden="true"
+        >
+            ▶
+        </div>
+
+        <h2>Drop your video here</h2>
+
+        <p>
+            or click to select a video from your device
+        </p>
+
+        <span class="file-types">
+            MP4 · WebM · MOV
+        </span>
+
+        <input
+            type="file"
+            id="videoInput"
+            accept="video/mp4,video/webm,video/quicktime"
+            hidden
+        >
 
     </div>
 
 
-    <div class="steps">
+    <div
+        class="video-editor"
+        id="videoEditor"
+        aria-live="polite"
+    >
 
-        <div class="step">
-            <span>01</span>
-            <h3>Upload</h3>
-            <p>Select or drag your image into the converter.</p>
+        <div class="video-preview">
+
+            <div class="preview-header">
+
+                <span>Video preview</span>
+
+                <span id="videoFileName"></span>
+
+            </div>
+
+            <video
+                id="videoPreview"
+                controls
+                preload="metadata"
+            >
+                Your browser does not support video playback.
+            </video>
+
         </div>
 
-        <div class="step">
-            <span>02</span>
-            <h3>Customize</h3>
-            <p>Choose JPG, PNG or WebP and adjust quality.</p>
-        </div>
 
-        <div class="step">
-            <span>03</span>
-            <h3>Download</h3>
-            <p>Convert your image and download the result.</p>
+        <div class="video-controls">
+
+            <div class="control-group">
+
+                <label for="videoFormat">
+                    Convert to
+                </label>
+
+                <select id="videoFormat">
+
+                    <option value="video/webm">
+                        WebM
+                    </option>
+
+                    <option value="video/mp4">
+                        MP4
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="control-group">
+
+                <div class="label-row">
+
+                    <label for="videoQuality">
+                        Video quality
+                    </label>
+
+                    <span id="videoQualityValue">
+                        80%
+                    </span>
+
+                </div>
+
+                <input
+                    type="range"
+                    id="videoQuality"
+                    min="10"
+                    max="100"
+                    value="80"
+                    aria-label="Video quality"
+                >
+
+            </div>
+
+
+            <div class="size-info">
+
+                <div>
+                    <span>Original</span>
+                    <strong id="videoOriginalSize">—</strong>
+                </div>
+
+                <div>
+                    <span>Duration</span>
+                    <strong id="videoDuration">—</strong>
+                </div>
+
+            </div>
+
+
+            <button
+                class="convert-button video-convert-button"
+                id="videoConvertButton"
+                type="button"
+            >
+                Convert Video
+                <span aria-hidden="true">→</span>
+            </button>
+
+
+            <button
+                class="reset-button"
+                id="videoResetButton"
+                type="button"
+            >
+                Choose another video
+            </button>
+
         </div>
 
     </div>
+
+</div>
+
+<div class="video-note">
+
+    <strong>Browser support matters.</strong>
+
+    <p>
+        Video codecs vary between browsers and devices.
+        The converter will use formats supported by the
+        current browser rather than uploading your video
+        to a remote processing service.
+    </p>
+
+</div>
+
+
+</section>
+
+<!-- FEATURES -->
+
+<section
+    class="features"
+    id="features"
+    aria-labelledby="features-title"
+>
+
+
+<div class="section-heading">
+
+    <span>WHY IMAGECONVERT</span>
+
+    <h2 id="features-title">
+        Simple tools.
+        <br>
+        Powerful results.
+    </h2>
+
+</div>
+
+
+<div class="feature-grid">
+
+    <article class="feature-card">
+
+        <div
+            class="feature-icon"
+            aria-hidden="true"
+        >
+            ⚡
+        </div>
+
+        <h3>Lightning fast</h3>
+
+        <p>
+            Supported image processing happens directly
+            in your browser, helping you avoid unnecessary
+            upload and download steps.
+        </p>
+
+    </article>
+
+
+    <article class="feature-card">
+
+        <div
+            class="feature-icon"
+            aria-hidden="true"
+        >
+            🔒
+        </div>
+
+        <h3>Privacy focused</h3>
+
+        <p>
+            ImageConvert is designed to process supported
+            files locally in your browser rather than
+            requiring a traditional file upload.
+        </p>
+
+    </article>
+
+
+    <article class="feature-card">
+
+        <div
+            class="feature-icon"
+            aria-hidden="true"
+        >
+            ✨
+        </div>
+
+        <h3>Easy to use</h3>
+
+        <p>
+            Select a file, choose your output format,
+            adjust the available settings and convert.
+        </p>
+
+    </article>
+
+
+    <article class="feature-card">
+
+        <div
+            class="feature-icon"
+            aria-hidden="true"
+        >
+            🖼️
+        </div>
+
+        <h3>Popular image formats</h3>
+
+        <p>
+            Work with JPG, PNG and WebP formats using
+            a single simple browser-based interface.
+        </p>
+
+    </article>
+
+
+    <article class="feature-card">
+
+        <div
+            class="feature-icon"
+            aria-hidden="true"
+        >
+            🎬
+        </div>
+
+        <h3>Video tools</h3>
+
+        <p>
+            Explore browser-based video conversion for
+            formats and codecs supported by your device.
+        </p>
+
+    </article>
+
+
+    <article class="feature-card">
+
+        <div
+            class="feature-icon"
+            aria-hidden="true"
+        >
+            🌐
+        </div>
+
+        <h3>No account required</h3>
+
+        <p>
+            Start converting supported files without
+            creating an account or signing into a service.
+        </p>
+
+    </article>
+
+</div>
+
+
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section
+    class="how-section"
+    id="how-it-works"
+    aria-labelledby="how-title"
+>
+
+
+<div class="section-heading">
+
+    <span>HOW IT WORKS</span>
+
+    <h2 id="how-title">
+        Three simple steps.
+    </h2>
+
+</div>
+
+
+<div class="steps">
+
+    <div class="step">
+
+        <span>01</span>
+
+        <h3>Upload</h3>
+
+        <p>
+            Select or drag your image or supported video
+            into the converter.
+        </p>
+
+    </div>
+
+
+    <div class="step">
+
+        <span>02</span>
+
+        <h3>Customize</h3>
+
+        <p>
+            Choose an output format and adjust the
+            available quality controls.
+        </p>
+
+    </div>
+
+
+    <div class="step">
+
+        <span>03</span>
+
+        <h3>Download</h3>
+
+        <p>
+            Convert the file and save the result directly
+            to your device.
+        </p>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- SEO CONTENT -->
+
+<section
+    class="content-section"
+    id="about-converter"
+    aria-labelledby="about-title"
+>
+
+
+<div class="section-heading">
+
+    <span>IMAGE CONVERSION GUIDE</span>
+
+    <h2 id="about-title">
+        Choose the right image format
+    </h2>
+
+</div>
+
+
+<div class="content-grid">
+
+    <article>
+
+        <h3>JPG and JPEG</h3>
+
+        <p>
+            JPG is a widely supported image format commonly
+            used for photographs and other images where a
+            smaller file size is useful. ImageConvert can
+            convert supported images to JPG and lets you
+            adjust output quality.
+        </p>
+
+    </article>
+
+
+    <article>
+
+        <h3>PNG</h3>
+
+        <p>
+            PNG is useful when you need lossless image
+            storage or transparency. Converting an image
+            to PNG can be useful for graphics, screenshots
+            and images that require transparent backgrounds.
+        </p>
+
+    </article>
+
+
+    <article>
+
+        <h3>WebP</h3>
+
+        <p>
+            WebP is a modern image format supported by
+            current browsers. It can be useful for websites
+            where image file size and loading performance
+            are important.
+        </p>
+
+    </article>
+
+</div>
+
+
+</section>
+
+<!-- FAQ -->
+
+<section
+    class="faq-section"
+    id="faq"
+    aria-labelledby="faq-title"
+>
+
+
+<div class="section-heading">
+
+    <span>FREQUENTLY ASKED QUESTIONS</span>
+
+    <h2 id="faq-title">
+        ImageConvert FAQ
+    </h2>
+
+</div>
+
+
+<div class="faq-list">
+
+    <details class="faq-item">
+
+        <summary>
+            Is ImageConvert free to use?
+        </summary>
+
+        <p>
+            Yes. ImageConvert is designed as a free
+            browser-based conversion tool.
+        </p>
+
+    </details>
+
+
+    <details class="faq-item">
+
+        <summary>
+            Are my images uploaded to a server?
+        </summary>
+
+        <p>
+            The image converter is designed to process
+            supported images directly in your browser.
+            Your files do not need to be uploaded to a
+            traditional conversion server.
+        </p>
+
+    </details>
+
+
+    <details class="faq-item">
+
+        <summary>
+            Can I convert JPG to PNG?
+        </summary>
+
+        <p>
+            Yes. Upload a JPG image, select PNG as the
+            output format and convert the image.
+        </p>
+
+    </details>
+
+
+    <details class="faq-item">
+
+        <summary>
+            Can I convert PNG to JPG?
+        </summary>
+
+        <p>
+            Yes. Upload a PNG image and select JPG as
+            the output format.
+        </p>
+
+    </details>
+
+
+    <details class="faq-item">
+
+        <summary>
+            Can I convert images to WebP?
+        </summary>
+
+        <p>
+            Yes. WebP is available as an output format
+            in the image converter.
+        </p>
+
+    </details>
+
+
+    <details class="faq-item">
+
+        <summary>
+            Does ImageConvert support video conversion?
+        </summary>
+
+        <p>
+            ImageConvert includes a video conversion
+            interface for supported formats. Actual
+            video conversion capabilities depend on the
+            browser and codecs available on your device.
+        </p>
+
+    </details>
+
+
+    <details class="faq-item">
+
+        <summary>
+            Do I need to install software?
+        </summary>
+
+        <p>
+            No installation is required for the web
+            application. Open ImageConvert in a supported
+            browser and use the available conversion tools.
+        </p>
+
+    </details>
+
+</div>
+
+
+</section>
+
+<!-- FINAL CTA -->
+
+<section
+    class="final-cta"
+    aria-labelledby="cta-title"
+>
+
+
+<span>READY TO CONVERT?</span>
+
+<h2 id="cta-title">
+    Turn your files into the format you need.
+</h2>
+
+<p>
+    Convert supported images and explore browser-based
+    video tools with ImageConvert.
+</p>
+
+<a
+    href="#converter"
+    class="hero-button primary"
+>
+    Start converting
+    <span aria-hidden="true">→</span>
+</a>
+
 
 </section>
 
 </main>
 
-
 <footer>
 
-    <div class="footer-logo">
-        <span class="logo-icon">✦</span>
-        ImageConvert
-    </div>
 
-    <p>
-        Fast image conversion, directly in your browser.
-    </p>
+<div class="footer-logo">
 
-    <p class="copyright">
-        © 2026 ImageConvert
-    </p>
+    <span
+        class="logo-icon"
+        aria-hidden="true"
+    >
+        ✦
+    </span>
+
+    ImageConvert
+
+</div>
+
+<p>
+    Browser-based image conversion with privacy in mind.
+</p>
+
+<div class="footer-links">
+
+    <a href="#converter">
+        Image Converter
+    </a>
+
+    <a href="#video-converter">
+        Video Converter
+    </a>
+
+    <a href="#features">
+        Features
+    </a>
+
+    <a href="#faq">
+        FAQ
+    </a>
+
+</div>
+
+<p class="copyright">
+    © 2026 ImageConvert
+</p>
+
 
 </footer>
 
+<noscript>
+
+
+<div class="noscript-message">
+    ImageConvert requires JavaScript for interactive image
+    and video conversion features. Please enable JavaScript
+    in your browser to use the converter.
+</div>
+
+
+</noscript>
 
 <script src="app.js"></script>
 
