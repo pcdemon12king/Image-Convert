@@ -17,7 +17,7 @@ const dimensions = document.getElementById("dimensions");
 const convertButton = document.getElementById("convertButton");
 const resetButton = document.getElementById("resetButton");
 
-const themeButton = document.getElementById("themeButton");
+
 const themeIcon = document.getElementById("themeIcon");
 
 /* =========================================================
