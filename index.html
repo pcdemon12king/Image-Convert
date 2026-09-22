@@ -1,39 +1,26 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>ImageConvert — Free Image & Video Converter Online</title>
 
-<meta
-name="description"
-content="ImageConvert is a free online image and video converter. Convert JPG, PNG, WebP, GIF, BMP, TIFF, AVIF, ICO, MP4, WebM, MOV, AVI, MKV and more directly in your browser."
-
->
-
-<meta
-name="keywords"
-content="image converter, video converter, JPG converter, PNG converter, WebP converter, GIF converter, BMP converter, TIFF converter, AVIF converter, ICO converter, MP4 converter, WebM converter, MOV converter, AVI converter, MKV converter, free online converter"
-
->
-
+  <meta
+    name="description"
+    content="ImageConvert is a free online image and video converter. Convert JPG, PNG, WebP, GIF, BMP, TIFF, AVIF, ICO, MP4, WebM, MOV, AVI, MKV and more directly in your browser."
+  >
+  <meta
+    name="keywords"
+    content="image converter, video converter, JPG converter, PNG converter, WebP converter, GIF converter, BMP converter, TIFF converter, AVIF converter, ICO converter, MP4 converter, WebM converter, MOV converter, AVI converter, MKV converter, free online converter"
+  >
   <meta name="robots" content="index, follow">
   <meta name="author" content="ImageConvert">
   <meta name="theme-color" content="#2563eb">
 
-  <!-- Google Search Console verification -->
-
   <meta name="google-site-verification" content="5adb2c5a9acb42a0">
-
-  <!-- Favicon -->
 
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
-  <!-- Open Graph -->
 
   <meta property="og:title" content="ImageConvert — Free Image & Video Converter">
   <meta
@@ -44,16 +31,12 @@ content="image converter, video converter, JPG converter, PNG converter, WebP co
   <meta property="og:url" content="https://pcdemon12king.github.io/Image-Convert/">
   <meta property="og:image" content="https://pcdemon12king.github.io/Image-Convert/favicon.ico">
 
-  <!-- Twitter -->
-
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ImageConvert — Free Image & Video Converter">
   <meta
     name="twitter:description"
     content="Free browser-based image and video converter supporting many popular formats."
   >
-
-  <!-- Structured Data -->
 
   <script type="application/ld+json">
   {
@@ -64,15 +47,9 @@ content="image converter, video converter, JPG converter, PNG converter, WebP co
     "description": "Free online image and video converter supporting JPG, PNG, WebP, GIF, BMP, TIFF, AVIF, ICO, MP4, WebM, MOV, AVI and MKV.",
     "applicationCategory": "MultimediaApplication",
     "operatingSystem": "Web Browser",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
   </script>
-
-  <!-- FAQ Structured Data -->
 
   <script type="application/ld+json">
   {
@@ -115,1164 +92,440 @@ content="image converter, video converter, JPG converter, PNG converter, WebP co
   }
   </script>
 
-  <!-- Stylesheet -->
-
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
-
   <header class="navbar">
     <div class="container nav-container">
+      <a href="#home" class="logo" aria-label="ImageConvert Home">
+        ImageConvert
+      </a>
 
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#image-converter">Image Converter</a>
+        <a href="#video-converter">Video Converter</a>
+        <a href="#formats">Formats</a>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#faq">FAQ</a>
+      </nav>
 
-  <a href="#home" class="logo" aria-label="ImageConvert Home">
-    ImageConvert
-  </a>
-
-  <nav class="nav-links" aria-label="Main navigation">
-    <a href="#image-converter">Image Converter</a>
-    <a href="#video-converter">Video Converter</a>
-    <a href="#formats">Formats</a>
-    <a href="#features">Features</a>
-    <a href="#how-it-works">How It Works</a>
-    <a href="#faq">FAQ</a>
-  </nav>
-
-
-</div>
-
-
+      <button
+        id="themeButton"
+        class="theme-button"
+        type="button"
+        aria-label="Toggle theme"
+      >
+        <span id="themeIcon">◐</span>
+      </button>
+    </div>
   </header>
 
-  <!-- =========================
-       HERO
-  ========================== -->
-
   <main id="home">
+    <section class="hero">
+      <div class="container hero-content">
+        <span class="hero-badge">⚡ Fast • Free • Browser Based</span>
 
-
-<section class="hero">
-  <div class="container hero-content">
-
-    <span class="hero-badge">
-      ⚡ Fast • Free • Browser Based
-    </span>
-
-    <h1>
-      Free Image & Video Converter Online
-    </h1>
-
-    <p>
-      Convert your images and videos between popular formats directly
-      in your browser. No complicated software installation required.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="#image-converter" class="button primary-button">
-        Convert Images
-      </a>
-
-      <a href="#video-converter" class="button secondary-button">
-        Convert Videos
-      </a>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- =========================
-     IMAGE CONVERTER
-========================== -->
-<section id="image-converter" class="converter-section">
-  <div class="container">
-
-    <div class="section-heading">
-      <span class="section-label">IMAGE CONVERTER</span>
-
-      <h2>
-        Convert Images to JPG, PNG, WebP, GIF, BMP, TIFF, AVIF & More
-      </h2>
-
-      <p>
-        Upload an image and convert it to a different format with
-        adjustable quality.
-      </p>
-    </div>
-
-
-    <div class="converter-card">
-
-      <!-- Drop Zone -->
-      <div
-        id="dropZone"
-        class="drop-zone"
-        role="button"
-        tabindex="0"
-        aria-label="Upload an image"
-      >
-
-        <div class="upload-icon">
-          📁
-        </div>
-
-        <h3>
-          Drop your image here
-        </h3>
+        <h1>Free Image &amp; Video Converter Online</h1>
 
         <p>
-          or click to choose a file
+          Convert your images and videos between popular formats directly
+          in your browser. No complicated software installation required.
         </p>
 
-        <p class="supported-text">
-          JPG • JPEG • PNG • WebP • GIF • BMP • TIFF • AVIF • ICO
-        </p>
-
-        <input
-          id="fileInput"
-          type="file"
-          accept="image/*,.jpg,.jpeg,.png,.webp,.gif,.bmp,.tif,.tiff,.avif,.ico"
-          hidden
-        >
-
-        <button
-          type="button"
-          class="button primary-button"
-          onclick="document.getElementById('fileInput').click()"
-        >
-          Choose Image
-        </button>
-
+        <div class="hero-buttons">
+          <a href="#image-converter" class="button primary-button">
+            Convert Images
+          </a>
+          <a href="#video-converter" class="button secondary-button">
+            Convert Videos
+          </a>
+        </div>
       </div>
+    </section>
 
-
-      <!-- Image Editor -->
-      <div id="editor" class="editor" hidden>
-
-        <div class="editor-preview">
-
-          <div class="preview-container">
-            <img
-              id="previewImage"
-              src=""
-              alt="Selected image preview"
-            >
-          </div>
-
-          <div class="file-details">
-            <strong id="fileName">
-              No file selected
-            </strong>
-
-            <div class="file-stats">
-              <span id="originalSize">0 KB</span>
-              <span id="dimensions">0 × 0</span>
-            </div>
-          </div>
-
+    <!-- =========================
+         IMAGE CONVERTER
+    ========================== -->
+    <section id="image-converter" class="converter-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">IMAGE CONVERTER</span>
+          <h2>Convert Images to JPG, PNG, WebP, GIF, BMP, TIFF, AVIF &amp; More</h2>
+          <p>Upload an image and convert it to a different format with adjustable quality.</p>
         </div>
 
-
-        <div class="editor-controls">
-
-          <!-- Image Format -->
-          <div class="control-group">
-
-            <label for="formatSelect">
-              Convert Image To
-            </label>
-
-            <select id="formatSelect">
-
-              <option value="jpg">
-                JPG / JPEG
-              </option>
-
-              <option value="png">
-                PNG
-              </option>
-
-              <option value="webp">
-                WebP
-              </option>
-
-              <option value="gif">
-                GIF
-              </option>
-
-              <option value="bmp">
-                BMP
-              </option>
-
-              <option value="tiff">
-                TIFF
-              </option>
-
-              <option value="avif">
-                AVIF
-              </option>
-
-              <option value="ico">
-                ICO
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <!-- Quality -->
-          <div class="control-group">
-
-            <label for="qualitySlider">
-              Quality:
-              <span id="qualityValue">85%</span>
-            </label>
+        <div class="converter-card">
+          <div
+            id="dropZone"
+            class="drop-zone"
+            role="button"
+            tabindex="0"
+            aria-label="Upload an image"
+          >
+            <div class="upload-icon">📁</div>
+            <h3>Drop your image here</h3>
+            <p>or click to choose a file</p>
+            <p class="supported-text">
+              JPG • JPEG • PNG • WebP • GIF • BMP • TIFF • AVIF • ICO
+            </p>
 
             <input
-              id="qualitySlider"
-              type="range"
-              min="10"
-              max="100"
-              value="85"
+              id="fileInput"
+              type="file"
+              accept="image/*,.jpg,.jpeg,.png,.webp,.gif,.bmp,.tif,.tiff,.avif,.ico"
+              hidden
             >
 
+            <button type="button" class="button primary-button" id="chooseImageBtn">
+              Choose Image
+            </button>
           </div>
 
+          <div id="editor" class="editor" hidden>
+            <div class="editor-preview">
+              <div class="preview-container">
+                <img id="previewImage" src="" alt="Selected image preview">
+              </div>
 
-          <!-- Convert -->
-          <button
-            id="convertButton"
-            class="button primary-button convert-button"
-            type="button"
-          >
-            Convert & Download
-          </button>
-
-
-          <!-- Reset -->
-          <button
-            id="resetButton"
-            class="button secondary-button"
-            type="button"
-          >
-            Choose Another File
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- =========================
-     POPULAR IMAGE CONVERSIONS
-========================== -->
-<section id="formats" class="popular-section">
-  <div class="container">
-
-    <div class="section-heading">
-
-      <span class="section-label">
-        IMAGE FORMATS
-      </span>
-
-      <h2>
-        Popular Image Conversions
-      </h2>
-
-      <p>
-        Convert between the most popular image formats.
-      </p>
-
-    </div>
-
-
-    <div class="popular-grid">
-
-      <article class="popular-card">
-        <div class="format-icon">JPG</div>
-        <h3>JPG to PNG</h3>
-        <p>Convert JPEG and JPG images to PNG format.</p>
-      </article>
-
-      <article class="popular-card">
-        <div class="format-icon">PNG</div>
-        <h3>PNG to JPG</h3>
-        <p>Convert PNG images to compressed JPG files.</p>
-      </article>
-
-      <article class="popular-card">
-        <div class="format-icon">WEBP</div>
-        <h3>JPG to WebP</h3>
-        <p>Convert JPG images to modern WebP format.</p>
-      </article>
-
-      <article class="popular-card">
-        <div class="format-icon">PNG</div>
-        <h3>WebP to PNG</h3>
-        <p>Convert WebP images to widely supported PNG files.</p>
-      </article>
-
-      <article class="popular-card">
-        <div class="format-icon">GIF</div>
-        <h3>GIF Converter</h3>
-        <p>Convert supported images to GIF format.</p>
-      </article>
-
-      <article class="popular-card">
-        <div class="format-icon">BMP</div>
-        <h3>BMP Converter</h3>
-        <p>Convert images to BMP format.</p>
-      </article>
-
-      <article class="popular-card">
-        <div class="format-icon">TIFF</div>
-        <h3>TIFF Converter</h3>
-        <p>Convert supported images to TIFF format.</p>
-      </article>
-
-      <article class="popular-card">
-        <div class="format-icon">AVIF</div>
-        <h3>AVIF Converter</h3>
-        <p>Convert supported images to AVIF format.</p>
-      </article>
-
-      <article class="popular-card">
-        <div class="format-icon">ICO</div>
-        <h3>ICO Converter</h3>
-        <p>Create supported ICO image files for icons.</p>
-      </article>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- =========================
-     VIDEO CONVERTER
-========================== -->
-<section id="video-converter" class="converter-section video-section">
-  <div class="container">
-
-    <div class="section-heading">
-
-      <span class="section-label">
-        VIDEO CONVERTER
-      </span>
-
-      <h2>
-        Convert Videos to MP4, WebM, MOV, AVI, MKV & GIF
-      </h2>
-
-      <p>
-        Convert popular video formats directly in your browser using
-        FFmpeg technology.
-      </p>
-
-    </div>
-
-
-    <div class="converter-card">
-
-      <!-- Video Drop Zone -->
-      <div
-        id="videoDropZone"
-        class="drop-zone"
-        role="button"
-        tabindex="0"
-        aria-label="Upload a video"
-      >
-
-        <div class="upload-icon">
-          🎬
-        </div>
-
-        <h3>
-          Drop your video here
-        </h3>
-
-        <p>
-          or click to choose a video
-        </p>
-
-        <p class="supported-text">
-          MP4 • WebM • MOV • AVI • MKV • GIF
-        </p>
-
-        <input
-          id="videoInput"
-          type="file"
-          accept="video/*,.mp4,.webm,.mov,.avi,.mkv,.gif"
-          hidden
-        >
-
-        <button
-          type="button"
-          class="button primary-button"
-          onclick="document.getElementById('videoInput').click()"
-        >
-          Choose Video
-        </button>
-
-      </div>
-
-
-      <!-- Video Editor -->
-      <div id="videoEditor" class="editor" hidden>
-
-        <div class="editor-preview">
-
-          <div class="preview-container">
-
-            <video
-              id="videoPreview"
-              controls
-              preload="metadata"
-            ></video>
-
-          </div>
-
-          <div class="file-details">
-
-            <strong id="videoFileName">
-              No video selected
-            </strong>
-
-            <div class="file-stats">
-              <span id="videoFileSize">0 KB</span>
-              <span id="videoDuration">0:00</span>
+              <div class="file-details">
+                <strong id="fileName">No file selected</strong>
+                <div class="file-stats">
+                  <span id="originalSize">0 KB</span>
+                  <span id="dimensions">0 × 0</span>
+                </div>
+              </div>
             </div>
 
+            <div class="editor-controls">
+              <div class="control-group">
+                <label for="formatSelect">Convert Image To</label>
+                <select id="formatSelect">
+                  <option value="image/jpeg">JPG / JPEG</option>
+                  <option value="image/png">PNG</option>
+                  <option value="image/webp">WebP</option>
+                  <option value="image/gif">GIF</option>
+                  <option value="image/bmp">BMP</option>
+                  <option value="image/tiff">TIFF</option>
+                  <option value="image/avif">AVIF</option>
+                  <option value="image/x-icon">ICO</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <label for="qualitySlider">
+                  Quality: <span id="qualityValue">85%</span>
+                </label>
+                <input id="qualitySlider" type="range" min="10" max="100" value="85">
+              </div>
+
+              <button
+                id="convertButton"
+                class="button primary-button convert-button"
+                type="button"
+              >
+                Convert &amp; Download
+              </button>
+
+              <button
+                id="resetButton"
+                class="button secondary-button"
+                type="button"
+              >
+                Choose Another File
+              </button>
+            </div>
           </div>
-
         </div>
-
-
-        <div class="editor-controls">
-
-          <!-- Video Format -->
-          <div class="control-group">
-
-            <label for="videoFormatSelect">
-              Convert Video To
-            </label>
-
-            <select id="videoFormatSelect">
-
-              <option value="mp4">
-                MP4
-              </option>
-
-              <option value="webm">
-                WebM
-              </option>
-
-              <option value="mov">
-                MOV
-              </option>
-
-              <option value="avi">
-                AVI
-              </option>
-
-              <option value="mkv">
-                MKV
-              </option>
-
-              <option value="gif">
-                GIF
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <!-- Video Convert -->
-          <button
-            id="videoConvertButton"
-            class="button primary-button convert-button"
-            type="button"
-          >
-            Convert Video & Download
-          </button>
-
-
-          <!-- Video Reset -->
-          <button
-            id="videoResetButton"
-            class="button secondary-button"
-            type="button"
-          >
-            Choose Another Video
-          </button>
-
-        </div>
-
       </div>
+    </section>
 
-    </div>
-
-  </div>
-</section>
-
-
-<!-- =========================
-     VIDEO FORMATS
-========================== -->
-<section class="popular-section">
-  <div class="container">
-
-    <div class="section-heading">
-
-      <span class="section-label">
-        VIDEO FORMATS
-      </span>
-
-      <h2>
-        Popular Video Conversions
-      </h2>
-
-      <p>
-        Convert videos between commonly used formats.
-      </p>
-
-    </div>
-
-
-    <div class="popular-grid">
-
-      <article class="popular-card">
-        <div class="format-icon">MP4</div>
-        <h3>WebM to MP4</h3>
-        <p>Convert WebM videos to widely supported MP4.</p>
-      </article>
-
-      <article class="popular-card">
-        <div class="format-icon">MP4</div>
-        <h3>MOV to MP4</h3>
-        <p>Convert MOV videos to MP4 format.</p>
-      </article>
-
-      <article class="popular-card">
-        <div class="format-icon">WEBM</div>
-        <h3>MP4 to WebM</h3>
-        <p>Convert MP4 videos to WebM format.</p>
-      </article>
-
-      <article class="popular-card">
-        <div class="format-icon">AVI</div>
-        <h3>MP4 to AVI</h3>
-        <p>Convert MP4 videos to AVI format.</p>
-      </article>
-
-      <article class="popular-card">
-        <div class="format-icon">MKV</div>
-        <h3>MP4 to MKV</h3>
-        <p>Convert MP4 videos to MKV format.</p>
-      </article>
-
-      <article class="popular-card">
-        <div class="format-icon">GIF</div>
-        <h3>Video to GIF</h3>
-        <p>Convert supported video clips into animated GIF files.</p>
-      </article>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- =========================
-     FEATURES
-========================== -->
-<section id="features" class="features-section">
-  <div class="container">
-
-    <div class="section-heading">
-
-      <span class="section-label">
-        FEATURES
-      </span>
-
-      <h2>
-        Why Use ImageConvert?
-      </h2>
-
-      <p>
-        Simple conversion tools designed to work directly in your browser.
-      </p>
-
-    </div>
-
-
-    <div class="features-grid">
-
-      <article class="feature-card">
-        <div class="feature-icon">⚡</div>
-
-        <h3>
-          Fast Conversion
-        </h3>
-
-        <p>
-          Convert supported files directly in your browser without
-          unnecessary upload steps.
-        </p>
-      </article>
-
-
-      <article class="feature-card">
-        <div class="feature-icon">🔒</div>
-
-        <h3>
-          Browser Based
-        </h3>
-
-        <p>
-          Your files can be processed locally in the browser using
-          client-side conversion technology.
-        </p>
-      </article>
-
-
-      <article class="feature-card">
-        <div class="feature-icon">🖼️</div>
-
-        <h3>
-          Many Image Formats
-        </h3>
-
-        <p>
-          Work with popular formats including JPG, PNG, WebP, GIF,
-          BMP, TIFF, AVIF and ICO.
-        </p>
-      </article>
-
-
-      <article class="feature-card">
-        <div class="feature-icon">🎥</div>
-
-        <h3>
-          Video Conversion
-        </h3>
-
-        <p>
-          Convert supported videos between MP4, WebM, MOV, AVI,
-          MKV and GIF.
-        </p>
-      </article>
-
-
-      <article class="feature-card">
-        <div class="feature-icon">🎚️</div>
-
-        <h3>
-          Quality Control
-        </h3>
-
-        <p>
-          Adjust image quality when supported by the selected output format.
-        </p>
-      </article>
-
-
-      <article class="feature-card">
-        <div class="feature-icon">📱</div>
-
-        <h3>
-          Works Across Devices
-        </h3>
-
-        <p>
-          Use the converter on modern desktop and mobile browsers.
-        </p>
-      </article>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- =========================
-     HOW IT WORKS
-========================== -->
-<section id="how-it-works" class="how-section">
-  <div class="container">
-
-    <div class="section-heading">
-
-      <span class="section-label">
-        HOW IT WORKS
-      </span>
-
-      <h2>
-        Convert a File in Three Simple Steps
-      </h2>
-
-    </div>
-
-
-    <div class="steps-grid">
-
-      <article class="step-card">
-
-        <div class="step-number">
-          1
+    <section id="formats" class="popular-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">IMAGE FORMATS</span>
+          <h2>Popular Image Conversions</h2>
+          <p>Convert between the most popular image formats.</p>
         </div>
 
-        <h3>
-          Upload
-        </h3>
+        <div class="popular-grid">
+          <article class="popular-card"><div class="format-icon">JPG</div><h3>JPG to PNG</h3><p>Convert JPEG and JPG images to PNG format.</p></article>
+          <article class="popular-card"><div class="format-icon">PNG</div><h3>PNG to JPG</h3><p>Convert PNG images to compressed JPG files.</p></article>
+          <article class="popular-card"><div class="format-icon">WEBP</div><h3>JPG to WebP</h3><p>Convert JPG images to modern WebP format.</p></article>
+          <article class="popular-card"><div class="format-icon">PNG</div><h3>WebP to PNG</h3><p>Convert WebP images to widely supported PNG files.</p></article>
+          <article class="popular-card"><div class="format-icon">GIF</div><h3>GIF Converter</h3><p>Convert supported images to GIF format.</p></article>
+          <article class="popular-card"><div class="format-icon">BMP</div><h3>BMP Converter</h3><p>Convert images to BMP format.</p></article>
+          <article class="popular-card"><div class="format-icon">TIFF</div><h3>TIFF Converter</h3><p>Convert supported images to TIFF format.</p></article>
+          <article class="popular-card"><div class="format-icon">AVIF</div><h3>AVIF Converter</h3><p>Convert supported images to AVIF format.</p></article>
+          <article class="popular-card"><div class="format-icon">ICO</div><h3>ICO Converter</h3><p>Create supported ICO image files for icons.</p></article>
+        </div>
+      </div>
+    </section>
 
-        <p>
-          Select an image or video from your device.
-        </p>
-
-      </article>
-
-
-      <article class="step-card">
-
-        <div class="step-number">
-          2
+    <!-- =========================
+         VIDEO CONVERTER
+    ========================== -->
+    <section id="video-converter" class="converter-section video-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">VIDEO CONVERTER</span>
+          <h2>Convert Videos to MP4, WebM, MOV, AVI, MKV &amp; GIF</h2>
+          <p>Convert popular video formats directly in your browser using FFmpeg technology.</p>
         </div>
 
-        <h3>
-          Choose Format
-        </h3>
+        <div class="converter-card">
+          <div
+            id="videoDropZone"
+            class="drop-zone"
+            role="button"
+            tabindex="0"
+            aria-label="Upload a video"
+          >
+            <div class="upload-icon">🎬</div>
+            <h3>Drop your video here</h3>
+            <p>or click to choose a video</p>
+            <p class="supported-text">MP4 • WebM • MOV • AVI • MKV • GIF</p>
 
-        <p>
-          Select the format you want to convert your file to.
-        </p>
+            <input
+              id="videoInput"
+              type="file"
+              accept="video/*,.mp4,.webm,.mov,.avi,.mkv,.gif"
+              hidden
+            >
 
-      </article>
+            <button type="button" class="button primary-button" id="chooseVideoBtn">
+              Choose Video
+            </button>
+          </div>
 
+          <div id="videoEditor" class="editor" hidden>
+            <div class="editor-preview">
+              <div class="preview-container">
+                <video id="videoPreview" controls preload="metadata"></video>
+              </div>
 
-      <article class="step-card">
+              <div class="file-details">
+                <strong id="videoFileName">No video selected</strong>
+                <div class="file-stats">
+                  <span id="videoFileSize">0 KB</span>
+                  <span id="videoDuration">0:00</span>
+                </div>
+              </div>
+            </div>
 
-        <div class="step-number">
-          3
+            <div class="editor-controls">
+              <div class="control-group">
+                <label for="videoFormatSelect">Convert Video To</label>
+                <select id="videoFormatSelect">
+                  <option value="mp4">MP4</option>
+                  <option value="webm">WebM</option>
+                  <option value="mov">MOV</option>
+                  <option value="avi">AVI</option>
+                  <option value="mkv">MKV</option>
+                  <option value="gif">GIF</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <label for="videoQuality">
+                  Quality: <span id="videoQualityValue">80%</span>
+                </label>
+                <input id="videoQuality" type="range" min="10" max="100" value="80">
+              </div>
+
+              <button
+                id="videoConvertButton"
+                class="button primary-button convert-button"
+                type="button"
+              >
+                Convert Video &amp; Download
+              </button>
+
+              <button
+                id="videoResetButton"
+                class="button secondary-button"
+                type="button"
+              >
+                Choose Another Video
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="popular-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">VIDEO FORMATS</span>
+          <h2>Popular Video Conversions</h2>
+          <p>Convert videos between commonly used formats.</p>
         </div>
 
-        <h3>
-          Convert & Download
-        </h3>
+        <div class="popular-grid">
+          <article class="popular-card"><div class="format-icon">MP4</div><h3>WebM to MP4</h3><p>Convert WebM videos to widely supported MP4.</p></article>
+          <article class="popular-card"><div class="format-icon">MP4</div><h3>MOV to MP4</h3><p>Convert MOV videos to MP4 format.</p></article>
+          <article class="popular-card"><div class="format-icon">WEBM</div><h3>MP4 to WebM</h3><p>Convert MP4 videos to WebM format.</p></article>
+          <article class="popular-card"><div class="format-icon">AVI</div><h3>MP4 to AVI</h3><p>Convert MP4 videos to AVI format.</p></article>
+          <article class="popular-card"><div class="format-icon">MKV</div><h3>MP4 to MKV</h3><p>Convert MP4 videos to MKV format.</p></article>
+          <article class="popular-card"><div class="format-icon">GIF</div><h3>Video to GIF</h3><p>Convert supported video clips into animated GIF files.</p></article>
+        </div>
+      </div>
+    </section>
 
+    <section id="features" class="features-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">FEATURES</span>
+          <h2>Why Use ImageConvert?</h2>
+          <p>Simple conversion tools designed to work directly in your browser.</p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card"><div class="feature-icon">⚡</div><h3>Fast Conversion</h3><p>Convert supported files directly in your browser without unnecessary upload steps.</p></article>
+          <article class="feature-card"><div class="feature-icon">🔒</div><h3>Browser Based</h3><p>Your files can be processed locally in the browser using client-side conversion technology.</p></article>
+          <article class="feature-card"><div class="feature-icon">🖼️</div><h3>Many Image Formats</h3><p>Work with popular formats including JPG, PNG, WebP, GIF, BMP, TIFF, AVIF and ICO.</p></article>
+          <article class="feature-card"><div class="feature-icon">🎥</div><h3>Video Conversion</h3><p>Convert supported videos between MP4, WebM, MOV, AVI, MKV and GIF.</p></article>
+          <article class="feature-card"><div class="feature-icon">🎚️</div><h3>Quality Control</h3><p>Adjust image quality when supported by the selected output format.</p></article>
+          <article class="feature-card"><div class="feature-icon">📱</div><h3>Works Across Devices</h3><p>Use the converter on modern desktop and mobile browsers.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="how-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">HOW IT WORKS</span>
+          <h2>Convert a File in Three Simple Steps</h2>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card"><div class="step-number">1</div><h3>Upload</h3><p>Select an image or video from your device.</p></article>
+          <article class="step-card"><div class="step-number">2</div><h3>Choose Format</h3><p>Select the format you want to convert your file to.</p></article>
+          <article class="step-card"><div class="step-number">3</div><h3>Convert &amp; Download</h3><p>Start the conversion and download the converted file.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="format-guide">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">FORMAT GUIDE</span>
+          <h2>Common Image &amp; Video Formats</h2>
+        </div>
+
+        <div class="format-table-wrapper">
+          <table class="format-table">
+            <thead>
+              <tr><th>Format</th><th>Type</th><th>Common Use</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>JPG / JPEG</td><td>Image</td><td>Photos and compressed images</td></tr>
+              <tr><td>PNG</td><td>Image</td><td>Transparent graphics and images</td></tr>
+              <tr><td>WebP</td><td>Image</td><td>Web images and smaller file sizes</td></tr>
+              <tr><td>GIF</td><td>Image / Animation</td><td>Simple animations</td></tr>
+              <tr><td>BMP</td><td>Image</td><td>Uncompressed bitmap graphics</td></tr>
+              <tr><td>TIFF</td><td>Image</td><td>High-quality images and publishing</td></tr>
+              <tr><td>AVIF</td><td>Image</td><td>Modern web images and compression</td></tr>
+              <tr><td>ICO</td><td>Image</td><td>Website and application icons</td></tr>
+              <tr><td>MP4</td><td>Video</td><td>General video playback</td></tr>
+              <tr><td>WebM</td><td>Video</td><td>Web video</td></tr>
+              <tr><td>MOV</td><td>Video</td><td>Video editing and Apple workflows</td></tr>
+              <tr><td>AVI</td><td>Video</td><td>Legacy and general video files</td></tr>
+              <tr><td>MKV</td><td>Video</td><td>Flexible video container</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>Free Online Image and Video Conversion</h2>
         <p>
-          Start the conversion and download the converted file.
+          ImageConvert is an online conversion tool for changing supported
+          image and video files between popular formats. You can convert
+          JPG, JPEG, PNG, WebP, GIF, BMP, TIFF, AVIF and ICO image files,
+          as well as supported MP4, WebM, MOV, AVI and MKV videos.
         </p>
 
-      </article>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- =========================
-     FORMAT GUIDE
-========================== -->
-<section class="format-guide">
-  <div class="container">
-
-    <div class="section-heading">
-
-      <span class="section-label">
-        FORMAT GUIDE
-      </span>
-
-      <h2>
-        Common Image & Video Formats
-      </h2>
-
-    </div>
-
-
-    <div class="format-table-wrapper">
-
-      <table class="format-table">
-
-        <thead>
-          <tr>
-            <th>Format</th>
-            <th>Type</th>
-            <th>Common Use</th>
-          </tr>
-        </thead>
-
-        <tbody>
-
-          <tr>
-            <td>JPG / JPEG</td>
-            <td>Image</td>
-            <td>Photos and compressed images</td>
-          </tr>
-
-          <tr>
-            <td>PNG</td>
-            <td>Image</td>
-            <td>Transparent graphics and images</td>
-          </tr>
-
-          <tr>
-            <td>WebP</td>
-            <td>Image</td>
-            <td>Web images and smaller file sizes</td>
-          </tr>
-
-          <tr>
-            <td>GIF</td>
-            <td>Image / Animation</td>
-            <td>Simple animations</td>
-          </tr>
-
-          <tr>
-            <td>BMP</td>
-            <td>Image</td>
-            <td>Uncompressed bitmap graphics</td>
-          </tr>
-
-          <tr>
-            <td>TIFF</td>
-            <td>Image</td>
-            <td>High-quality images and publishing</td>
-          </tr>
-
-          <tr>
-            <td>AVIF</td>
-            <td>Image</td>
-            <td>Modern web images and compression</td>
-          </tr>
-
-          <tr>
-            <td>ICO</td>
-            <td>Image</td>
-            <td>Website and application icons</td>
-          </tr>
-
-          <tr>
-            <td>MP4</td>
-            <td>Video</td>
-            <td>General video playback</td>
-          </tr>
-
-          <tr>
-            <td>WebM</td>
-            <td>Video</td>
-            <td>Web video</td>
-          </tr>
-
-          <tr>
-            <td>MOV</td>
-            <td>Video</td>
-            <td>Video editing and Apple workflows</td>
-          </tr>
-
-          <tr>
-            <td>AVI</td>
-            <td>Video</td>
-            <td>Legacy and general video files</td>
-          </tr>
-
-          <tr>
-            <td>MKV</td>
-            <td>Video</td>
-            <td>Flexible video container</td>
-          </tr>
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- =========================
-     SEO CONTENT
-========================== -->
-<section class="content-section">
-
-  <div class="container">
-
-    <h2>
-      Free Online Image and Video Conversion
-    </h2>
-
-    <p>
-      ImageConvert is an online conversion tool for changing supported
-      image and video files between popular formats. You can convert
-      JPG, JPEG, PNG, WebP, GIF, BMP, TIFF, AVIF and ICO image files,
-      as well as supported MP4, WebM, MOV, AVI and MKV videos.
-    </p>
-
-    <h3>
-      JPG, JPEG and PNG Conversion
-    </h3>
-
-    <p>
-      JPG and JPEG are commonly used for photographs and compressed
-      images, while PNG is commonly used when transparency or lossless
-      image data is important. ImageConvert lets you convert between
-      these formats when supported by your browser and conversion engine.
-    </p>
-
-    <h3>
-      WebP, AVIF and Modern Web Images
-    </h3>
-
-    <p>
-      WebP and AVIF are modern image formats designed to provide
-      efficient compression for websites and digital content. Converting
-      images into these formats can be useful when working with modern
-      web projects.
-    </p>
-
-    <h3>
-      Video Conversion
-    </h3>
-
-    <p>
-      The video converter uses FFmpeg technology in the browser to
-      process supported video formats. Available conversions include
-      MP4, WebM, MOV, AVI, MKV and video-to-GIF workflows, depending
-      on browser and FFmpeg support.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     FAQ
-========================== -->
-<section id="faq" class="faq-section">
-
-  <div class="container">
-
-    <div class="section-heading">
-
-      <span class="section-label">
-        FAQ
-      </span>
-
-      <h2>
-        Frequently Asked Questions
-      </h2>
-
-    </div>
-
-
-    <div class="faq-list">
-
-      <details class="faq-item">
-
-        <summary>
-          Is ImageConvert free?
-        </summary>
-
+        <h3>JPG, JPEG and PNG Conversion</h3>
         <p>
-          Yes. ImageConvert is designed as a free browser-based
-          image and video conversion tool.
+          JPG and JPEG are commonly used for photographs and compressed
+          images, while PNG is commonly used when transparency or lossless
+          image data is important. ImageConvert lets you convert between
+          these formats when supported by your browser and conversion engine.
         </p>
 
-      </details>
-
-
-      <details class="faq-item">
-
-        <summary>
-          What image formats are supported?
-        </summary>
-
+        <h3>WebP, AVIF and Modern Web Images</h3>
         <p>
-          The interface supports popular formats including JPG,
-          JPEG, PNG, WebP, GIF, BMP, TIFF, AVIF and ICO. Actual
-          conversion support can depend on the browser and FFmpeg build.
+          WebP and AVIF are modern image formats designed to provide
+          efficient compression for websites and digital content. Converting
+          images into these formats can be useful when working with modern
+          web projects.
         </p>
 
-      </details>
-
-
-      <details class="faq-item">
-
-        <summary>
-          What video formats are supported?
-        </summary>
-
+        <h3>Video Conversion</h3>
         <p>
-          The video converter interface supports MP4, WebM, MOV,
-          AVI, MKV and GIF workflows. Actual codec support depends
-          on the FFmpeg build used by the application.
+          The video converter uses FFmpeg technology in the browser to
+          process supported video formats. Available conversions include
+          MP4, WebM, MOV, AVI, MKV and video-to-GIF workflows, depending
+          on browser and FFmpeg support.
         </p>
+      </div>
+    </section>
 
-      </details>
+    <section id="faq" class="faq-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">FAQ</span>
+          <h2>Frequently Asked Questions</h2>
+        </div>
 
+        <div class="faq-list">
+          <details class="faq-item"><summary>Is ImageConvert free?</summary><p>Yes. ImageConvert is designed as a free browser-based image and video conversion tool.</p></details>
+          <details class="faq-item"><summary>What image formats are supported?</summary><p>The interface supports popular formats including JPG, JPEG, PNG, WebP, GIF, BMP, TIFF, AVIF and ICO. Actual conversion support can depend on the browser and FFmpeg build.</p></details>
+          <details class="faq-item"><summary>What video formats are supported?</summary><p>The video converter interface supports MP4, WebM, MOV, AVI, MKV and GIF workflows. Actual codec support depends on the FFmpeg build used by the application.</p></details>
+          <details class="faq-item"><summary>Do I need to install software?</summary><p>No. ImageConvert runs in a modern web browser.</p></details>
+          <details class="faq-item"><summary>Are my files uploaded?</summary><p>The application is designed to process files locally in the browser. Your browser and the selected conversion operation determine how the file is processed.</p></details>
+          <details class="faq-item"><summary>Can I convert every file type?</summary><p>Not necessarily. Supported formats and codecs depend on browser capabilities and the FFmpeg build included with the application. Some specialized formats may require additional processing support.</p></details>
+        </div>
+      </div>
+    </section>
 
-      <details class="faq-item">
-
-        <summary>
-          Do I need to install software?
-        </summary>
-
-        <p>
-          No. ImageConvert runs in a modern web browser.
-        </p>
-
-      </details>
-
-
-      <details class="faq-item">
-
-        <summary>
-          Are my files uploaded?
-        </summary>
-
-        <p>
-          The application is designed to process files locally in
-          the browser. Your browser and the selected conversion
-          operation determine how the file is processed.
-        </p>
-
-      </details>
-
-
-      <details class="faq-item">
-
-        <summary>
-          Can I convert every file type?
-        </summary>
-
-        <p>
-          Not necessarily. Supported formats and codecs depend on
-          browser capabilities and the FFmpeg build included with
-          the application. Some specialized formats may require
-          additional processing support.
-        </p>
-
-      </details>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     CALL TO ACTION
-========================== -->
-<section class="cta-section">
-
-  <div class="container">
-
-    <div class="cta-content">
-
-      <h2>
-        Convert Your Files Online
-      </h2>
-
-      <p>
-        Start converting images and videos with ImageConvert.
-      </p>
-
-      <a
-        href="#image-converter"
-        class="button primary-button"
-      >
-        Start Converting
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Convert Your Files Online</h2>
+          <p>Start converting images and videos with ImageConvert.</p>
+          <a href="#image-converter" class="button primary-button">Start Converting</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
   <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <a href="#home" class="logo">ImageConvert</a>
+        <p>Free online image and video conversion tools.</p>
+      </div>
 
+      <div class="footer-links">
+        <a href="#image-converter">Image Converter</a>
+        <a href="#video-converter">Video Converter</a>
+        <a href="#formats">Formats</a>
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
 
-<div class="container footer-content">
-
-  <div>
-
-    <a href="#home" class="logo">
-      ImageConvert
-    </a>
-
-    <p>
-      Free online image and video conversion tools.
-    </p>
-
-  </div>
-
-
-  <div class="footer-links">
-
-    <a href="#image-converter">
-      Image Converter
-    </a>
-
-    <a href="#video-converter">
-      Video Converter
-    </a>
-
-    <a href="#formats">
-      Formats
-    </a>
-
-    <a href="#features">
-      Features
-    </a>
-
-    <a href="#faq">
-      FAQ
-    </a>
-
-  </div>
-
-</div>
-
-
-<div class="container footer-bottom">
-
-  <p>
-    © 2026 ImageConvert. All rights reserved.
-  </p>
-
-</div>
-
-
+    <div class="container footer-bottom">
+      <p>© 2026 ImageConvert. All rights reserved.</p>
+    </div>
   </footer>
-
-  <!-- =========================
-       NOSCRIPT
-  ========================== -->
 
   <noscript>
     <div class="noscript-message">
@@ -1282,16 +535,14 @@ content="image converter, video converter, JPG converter, PNG converter, WebP co
   </noscript>
 
   <!-- =========================
-       FFMPEG.WASM
+       FFMPEG — loaded from LOCAL files (same origin)
+       This is REQUIRED because ffmpeg.wasm creates a Web Worker,
+       and browsers block Workers from cross-origin scripts.
   ========================== -->
-
-  <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.15/dist/umd/index.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.2/dist/umd/index.js"></script>
+  <script src="./ffmpeg/ffmpeg.js"></script>
+  <script src="./ffmpeg/util.js"></script>
 
   <!-- Application JavaScript -->
-
   <script src="app.js"></script>
-
 </body>
 </html>
