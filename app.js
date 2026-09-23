@@ -1,4 +1,18 @@
 /* =========================================================
+   IMAGECONVERT — wasm-vips IMAGE PATH + FFmpeg VIDEO PATH
+   =========================================================
+   IMAGES: wasm-vips (libvips via WebAssembly)
+   VIDEO:  @ffmpeg/ffmpeg ESM build via esm.sh
+========================================================= */
+
+/* =========================================================
+   IMPORTS
+========================================================= */
+import Vips from './vips/vips-es6.js';
+import { FFmpeg } from 'https://esm.sh/@ffmpeg/ffmpeg@0.12.15';
+import { fetchFile, toBlobURL } from 'https://esm.sh/@ffmpeg/util@0.12.2';
+
+/* =========================================================
    ELEMENT REFERENCES
 ========================================================= */
 const dropZone = document.getElementById("dropZone");
@@ -49,22 +63,20 @@ let imageObjectURL = null;
 let selectedVideoFile = null;
 let videoObjectURL = null;
 
+let vips = null;
+let vipsLoaded = false;
+let vipsLoading = false;
+
 let ffmpeg = null;
 let ffmpegLoaded = false;
 let ffmpegLoading = false;
 
 /* =========================================================
    FFmpeg CONFIG
-   ---------------------------------------------------------
-   Wrapper + util are loaded from LOCAL ./ffmpeg/ files
-   (required — Workers can't be created cross-origin).
-
-   Core (@ffmpeg/core) is fetched as a Blob via toBlobURL(),
-   so it CAN come from a CDN.
 ========================================================= */
-const FFMPEG_CORE_VERSION = "0.12.6";
+const FFMPEG_CORE_VERSION = "0.12.10";
 const FFMPEG_CORE_BASE =
-  `https://cdn.jsdelivr.net/npm/@ffmpeg/core@${FFMPEG_CORE_VERSION}/dist/umd`;
+  `https://unpkg.com/@ffmpeg/core@${FFMPEG_CORE_VERSION}/dist/esm`;
 
 /* =========================================================
    HELPERS
@@ -139,17 +151,39 @@ function getFileExtension(name) {
 }
 
 /* =========================================================
-   PREFLIGHT — check wrapper + util are loaded
+   wasm-vips LOADER
 ========================================================= */
-function checkFFmpegLibs() {
-  const missing = [];
-  if (typeof window.FFmpeg === "undefined") missing.push("@ffmpeg/ffmpeg");
-  if (typeof window.FFmpegUtil === "undefined") missing.push("@ffmpeg/util");
-  return missing;
+async function loadVips() {
+  if (vipsLoaded && vips) return vips;
+
+  if (vipsLoading) {
+    while (vipsLoading) await new Promise((r) => setTimeout(r, 100));
+    if (vipsLoaded && vips) return vips;
+  }
+
+  vipsLoading = true;
+
+  try {
+    vips = await Vips();
+    vipsLoaded = true;
+    console.log("[wasm-vips] loaded successfully");
+    return vips;
+  } catch (error) {
+    vips = null;
+    vipsLoaded = false;
+    console.error("[wasm-vips] load failed:", error);
+    throw new Error(
+      "Failed to initialize wasm-vips. " +
+      "Make sure vips-es6.js and vips.wasm are in the ./vips/ folder, " +
+      "and that coi-serviceworker.js is working (check console for COOP/COEP errors)."
+    );
+  } finally {
+    vipsLoading = false;
+  }
 }
 
 /* =========================================================
-   FFmpeg LOADER
+   FFmpeg LOADER (ESM)
 ========================================================= */
 async function loadFFmpeg() {
   if (ffmpegLoaded && ffmpeg) return ffmpeg;
@@ -162,19 +196,7 @@ async function loadFFmpeg() {
   ffmpegLoading = true;
 
   try {
-    const missing = checkFFmpegLibs();
-    if (missing.length > 0) {
-      throw new Error(
-        `FFmpeg libraries missing: ${missing.join(", ")}. ` +
-        `Make sure the ./ffmpeg/ folder contains ffmpeg.js and util.js ` +
-        `and that index.html loads them with <script> tags.`
-      );
-    }
-
-    const { FFmpeg: FFmpegClass } = window.FFmpeg;
-    const { toBlobURL } = window.FFmpegUtil;
-
-    ffmpeg = new FFmpegClass();
+    ffmpeg = new FFmpeg();
 
     ffmpeg.on("progress", ({ progress }) => {
       const pct = Math.min(100, Math.max(0, Math.round(progress * 100)));
@@ -197,7 +219,11 @@ async function loadFFmpeg() {
     );
 
     updateConversionStatus("Initializing FFmpeg...");
-    await ffmpeg.load({ coreURL, wasmURL });
+    await ffmpeg.load({
+      coreURL,
+      wasmURL,
+      classWorkerURL: new URL('worker.js', location.href).href
+    });
 
     ffmpegLoaded = true;
     updateConversionStatus("FFmpeg ready");
@@ -315,7 +341,7 @@ if (qualitySlider && qualityValue) {
 }
 
 /* =========================================================
-   IMAGE CONVERSION
+   IMAGE CONVERSION — wasm-vips
 ========================================================= */
 if (convertButton) {
   convertButton.addEventListener("click", convertImage);
@@ -331,19 +357,7 @@ async function convertImage() {
   setButtonText(convertButton, "Converting...");
 
   try {
-    const canvasMimes = ["image/jpeg", "image/png", "image/webp"];
-
-    if (canvasMimes.includes(outputMime)) {
-      try {
-        await convertImageWithCanvas(outputMime);
-        finishImageConversion(true);
-        return;
-      } catch (canvasError) {
-        console.warn("[Canvas] failed, falling back to FFmpeg:", canvasError);
-      }
-    }
-
-    await convertImageWithFFmpeg(outputMime);
+    await convertImageWithVips(outputMime);
     finishImageConversion(true);
   } catch (error) {
     console.error("[Image] conversion failed:", error);
@@ -369,151 +383,75 @@ function finishImageConversion(success, error) {
 }
 
 /* =========================================================
-   CANVAS CONVERSION
+   wasm-vips IMAGE CONVERSION
 ========================================================= */
-async function convertImageWithCanvas(outputMime) {
-  if (!selectedFile) throw new Error("No selected file.");
+async function convertImageWithVips(outputMime) {
+  const engine = await loadVips();
 
   const quality = Math.min(
     1,
-    Math.max(0.01, Number(qualitySlider ? qualitySlider.value : 80) / 100)
+    Math.max(0.01, Number(qualitySlider ? qualitySlider.value : 85) / 100)
   );
-
-  let width, height, drawable;
-
-  if (typeof createImageBitmap === "function") {
-    try {
-      const bitmap = await createImageBitmap(selectedFile);
-      width = bitmap.width;
-      height = bitmap.height;
-      drawable = bitmap;
-    } catch (e) {
-      console.warn("[Canvas] createImageBitmap failed:", e);
-    }
-  }
-
-  if (!drawable) {
-    const img = new Image();
-    img.src = imageObjectURL;
-    await new Promise((resolve, reject) => {
-      img.onload = resolve;
-      img.onerror = () =>
-        reject(new Error("Browser cannot decode this image format."));
-    });
-    width = img.naturalWidth;
-    height = img.naturalHeight;
-    drawable = img;
-  }
-
-  const canvas = document.createElement("canvas");
-  canvas.width = width;
-  canvas.height = height;
-
-  const ctx = canvas.getContext("2d");
-  if (!ctx) throw new Error("Canvas 2D context unavailable.");
-
-  if (outputMime === "image/jpeg") {
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, width, height);
-  }
-
-  ctx.drawImage(drawable, 0, 0, width, height);
-
-  const blob = await new Promise((resolve, reject) => {
-    canvas.toBlob(
-      (result) => {
-        if (result && result.size > 0) resolve(result);
-        else reject(
-          new Error(
-            `Canvas could not encode ${outputMime}. Your browser may not support this output format.`
-          )
-        );
-      },
-      outputMime,
-      quality
-    );
-  });
-
-  const extension = getExtension(outputMime);
-  downloadBlob(blob, `${getBaseName(selectedFile.name)}-converted.${extension}`);
-}
-
-/* =========================================================
-   FFMPEG IMAGE CONVERSION
-========================================================= */
-async function convertImageWithFFmpeg(outputMime) {
-  const engine = await loadFFmpeg();
 
   const inputExtension = getFileExtension(selectedFile.name) || "img";
   const outputExtension = getExtension(outputMime);
 
-  const inputName = `input.${inputExtension}`;
-  const outputName = `output.${outputExtension}`;
+  const arrayBuffer = await selectedFile.arrayBuffer();
+  const inputBuffer = new Uint8Array(arrayBuffer);
 
-  const inputData = await window.FFmpegUtil.fetchFile(selectedFile);
-  await engine.writeFile(inputName, inputData);
+  let image;
+  try {
+    image = engine.Image.newFromBuffer(inputBuffer);
+  } catch (e) {
+    throw new Error(
+      `wasm-vips could not read this ${inputExtension.toUpperCase()} file. ` +
+      (e.message || "The file may be corrupted or in an unsupported variant.")
+    );
+  }
 
-  const args = ["-i", inputName];
-  const q = Number(qualitySlider ? qualitySlider.value : 85);
+  const saveOptions = {};
 
   if (outputExtension === "jpg" || outputExtension === "jpeg") {
-    args.push("-q:v", String(Math.max(2, Math.round(31 - q * 0.29))));
+    saveOptions.Q = Math.round(quality * 100);
+    saveOptions.optimizeCoding = true;
   } else if (outputExtension === "webp") {
-    args.push("-q:v", String(Math.max(1, Math.round(100 - q))));
+    saveOptions.Q = Math.round(quality * 100);
+  } else if (outputExtension === "png") {
+    saveOptions.compression = 9;
+    if (quality < 1) {
+      saveOptions.palette = true;
+      saveOptions.Q = Math.round(quality * 100);
+    }
   } else if (outputExtension === "avif") {
-    args.push(
-      "-c:v", "libaom-av1",
-      "-crf", String(Math.max(0, Math.round(63 - q * 0.63)))
-    );
+    saveOptions.Q = Math.round(quality * 100);
+  } else if (outputExtension === "tiff") {
+    saveOptions.compression = "lzw";
+    saveOptions.Q = Math.round(quality * 100);
+  } else if (outputExtension === "ico") {
+    const maxDim = 256;
+    const scale = Math.min(1, maxDim / Math.max(image.width, image.height));
+    if (scale < 1) {
+      const resized = image.resize(scale);
+      image.delete();
+      image = resized;
+    }
   }
 
-  if (outputExtension === "ico") {
-    args.push("-vf", "scale=256:256:force_original_aspect_ratio=decrease");
-  }
-
-  args.push("-y", outputName);
-
-  let execError = null;
+  let outputBuffer;
   try {
-    await engine.exec(args);
+    outputBuffer = image.writeToBuffer(`.${outputExtension}`, saveOptions);
   } catch (e) {
-    execError = e;
-  }
-
-  let data = null;
-  try {
-    data = await engine.readFile(outputName);
-  } catch (readError) {
-    await cleanupFFmpegFiles([inputName]).catch(() => {});
-
-    const codecHint =
-      outputExtension === "tiff"
-        ? "TIFF encoding requires libtiff, which is not in the default @ffmpeg/core build."
-        : outputExtension === "avif"
-        ? "AVIF encoding requires libaom-av1, which is not in the default @ffmpeg/core build."
-        : outputExtension === "ico"
-        ? "ICO encoding requires the ICO muxer, which is not in the default @ffmpeg/core build."
-        : outputExtension === "bmp"
-        ? "BMP encoding requires libbmpenc, which is not in the default @ffmpeg/core build."
-        : outputExtension === "gif"
-        ? "GIF encoding requires libgif/gif muxer, which may not be in the default @ffmpeg/core build."
-        : "";
-
+    image.delete();
     throw new Error(
-      `FFmpeg could not produce a ${outputExtension.toUpperCase()} file. ` +
-      (codecHint || (execError ? execError.message : "Unknown FFmpeg error."))
+      `wasm-vips could not encode to ${outputExtension.toUpperCase()}. ` +
+      (e.message || "This format may not be supported by the current build.")
     );
   }
 
-  if (!data || data.length === 0) {
-    await cleanupFFmpegFiles([inputName, outputName]).catch(() => {});
-    throw new Error("FFmpeg produced an empty file.");
-  }
+  image.delete();
 
-  const blob = new Blob([new Uint8Array(data)], { type: outputMime });
+  const blob = new Blob([outputBuffer], { type: outputMime });
   downloadBlob(blob, `${getBaseName(selectedFile.name)}-converted.${outputExtension}`);
-
-  await cleanupFFmpegFiles([inputName, outputName]);
 }
 
 /* =========================================================
@@ -652,7 +590,7 @@ if (videoQuality && videoQualityValue) {
 }
 
 /* =========================================================
-   VIDEO CONVERSION
+   VIDEO CONVERSION (FFmpeg)
 ========================================================= */
 if (videoConvertButton) videoConvertButton.addEventListener("click", convertVideo);
 
@@ -675,10 +613,7 @@ async function convertVideo() {
     const inputName = `input.${inputExtension}`;
     const outputName = `output.${outputExtension}`;
 
-    await engine.writeFile(
-      inputName,
-      await window.FFmpegUtil.fetchFile(selectedVideoFile)
-    );
+    await engine.writeFile(inputName, await fetchFile(selectedVideoFile));
 
     const q = Number(videoQuality ? videoQuality.value : 80);
     const crf = Math.round(36 - q * 0.2);
@@ -692,10 +627,11 @@ async function convertVideo() {
       );
     } else if (outputExtension === "webm") {
       command.push(
-        "-c:v", "libvpx-vp9",
+        "-c:v", "libvpx",
         "-crf", String(Math.max(18, Math.min(40, crf))),
-        "-b:v", "0",
-        "-c:a", "libopus", "-b:a", "128k"
+        "-b:v", "1M",
+        "-c:a", "libvorbis", "-b:a", "128k",
+        "-threads", "1"
       );
     } else if (outputExtension === "mov") {
       command.push(
@@ -722,8 +658,29 @@ async function convertVideo() {
 
     await engine.exec(command);
 
-    const data = await engine.readFile(outputName);
-    const bytes = new Uint8Array(data);
+    // Free the input file from WASM memory before reading the output
+    try { await engine.deleteFile(inputName); } catch (e) { /* ignore */ }
+
+    // ---- Verify the output file exists before reading ----
+    let data;
+    try {
+      data = await engine.readFile(outputName);
+    } catch (readError) {
+      console.error("[Video] readFile failed:", readError);
+      throw new Error(
+        "FFmpeg finished but the output file could not be read. " +
+        "The conversion may have been interrupted or the format is unsupported."
+      );
+    }
+
+    if (!data || data.length === 0) {
+      throw new Error(
+        "FFmpeg produced an empty output file. " +
+        "Try a different output format or a shorter video."
+      );
+    }
+
+    const bytes = data instanceof Uint8Array ? data : new Uint8Array(data);
     const mime = normalizeToMime(outputExtension);
     const blob = new Blob([bytes], { type: mime });
 
@@ -732,7 +689,7 @@ async function convertVideo() {
       `${getBaseName(selectedVideoFile.name)}-converted.${outputExtension}`
     );
 
-    await cleanupFFmpegFiles([inputName, outputName]);
+    await cleanupFFmpegFiles([outputName]);
 
     setButtonText(videoConvertButton, "✓ Downloaded");
     setTimeout(() => {
@@ -854,4 +811,7 @@ if (themeButton) {
 window.addEventListener("beforeunload", () => {
   if (imageObjectURL) URL.revokeObjectURL(imageObjectURL);
   if (videoObjectURL) URL.revokeObjectURL(videoObjectURL);
+  if (vips && vipsLoaded) {
+    try { vips.shutdown(); } catch (e) { /* ignore */ }
+  }
 });

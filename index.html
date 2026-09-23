@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ImageConvert — Free Image & Video Converter Online</title>
 
+  <!-- REQUIRED for wasm-vips on GitHub Pages (adds COOP/COEP headers via Service Worker) -->
+  <script src="coi-serviceworker.js"></script>
+
   <meta
     name="description"
     content="ImageConvert is a free online image and video converter. Convert JPG, PNG, WebP, GIF, BMP, TIFF, AVIF, ICO, MP4, WebM, MOV, AVI, MKV and more directly in your browser."
@@ -146,9 +149,7 @@
       </div>
     </section>
 
-    <!-- =========================
-         IMAGE CONVERTER
-    ========================== -->
+    <!-- IMAGE CONVERTER -->
     <section id="image-converter" class="converter-section">
       <div class="container">
         <div class="section-heading">
@@ -264,9 +265,7 @@
       </div>
     </section>
 
-    <!-- =========================
-         VIDEO CONVERTER
-    ========================== -->
+    <!-- VIDEO CONVERTER -->
     <section id="video-converter" class="converter-section video-section">
       <div class="container">
         <div class="section-heading">
@@ -534,15 +533,7 @@
     </div>
   </noscript>
 
-  <!-- =========================
-       FFMPEG — loaded from LOCAL files (same origin)
-       This is REQUIRED because ffmpeg.wasm creates a Web Worker,
-       and browsers block Workers from cross-origin scripts.
-  ========================== -->
-  <script src="./ffmpeg/ffmpeg.js"></script>
-  <script src="./ffmpeg/util.js"></script>
-
-  <!-- Application JavaScript -->
-  <script src="app.js"></script>
+  <!-- Application JavaScript (ES module for wasm-vips + FFmpeg ESM) -->
+  <script type="module" src="app.js"></script>
 </body>
 </html>
