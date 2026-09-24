@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Use — ImageConvert</title>
+
+  <script src="coi-serviceworker.js"></script>
+
+  <meta name="description" content="Terms of Use for ImageConvert, the free browser-based image and video converter.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" aria-label="ImageConvert Home">ImageConvert</a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#image-converter">Image Converter</a>
+        <a href="index.html#video-converter">Video Converter</a>
+        <a href="index.html#formats">Formats</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+
+      <button id="themeButton" class="theme-button" type="button" aria-label="Toggle theme">
+        <span id="themeIcon">◐</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="content-section" style="padding-top: 90px;">
+      <div class="container">
+
+        <span class="section-label">LEGAL</span>
+        <h2>Terms of Use</h2>
+
+        <p><strong>Last updated:</strong> January 2026</p>
+
+        <p>
+          By accessing or using ImageConvert ("the Site"), you agree to be bound by
+          these Terms of Use. If you do not agree, please do not use the Site.
+        </p>
+
+        <h3>1. Use of the Service</h3>
+        <p>
+          ImageConvert provides a free, browser-based tool for converting image and
+          video files between supported formats. You may use the Site for personal
+          or commercial purposes, provided your use complies with these Terms and
+          all applicable laws.
+        </p>
+
+        <h3>2. Your Files</h3>
+        <p>
+          You retain all rights to the files you convert. Because conversion is
+          performed locally in your browser, we do not receive, store, or have
+          access to your files. You are solely responsible for ensuring you have
+          the right to convert and use any file you process through the Site.
+        </p>
+
+        <h3>3. Acceptable Use</h3>
+        <p>
+          You agree not to use the Site to:
+        </p>
+        <ul>
+          <li>Convert or distribute illegal content, including content that infringes copyright, promotes hate, or violates any law</li>
+          <li>Attempt to disrupt, overload, or interfere with the Site's operation</li>
+          <li>Reverse-engineer, scrape, or resell the Site's functionality without permission</li>
+          <li>Misrepresent the Site's output as your own original work where prohibited by law</li>
+        </ul>
+
+        <h3>4. No Warranty</h3>
+        <p>
+          The Site is provided "as is" and "as available" without warranties of any
+          kind, express or implied. We do not guarantee that conversions will be
+          error-free, that output quality will meet your expectations, or that the
+          Site will be available without interruption. Format and codec support
+          depends on your browser and the underlying WebAssembly builds.
+        </p>
+
+        <h3>5. Limitation of Liability</h3>
+        <p>
+          To the maximum extent permitted by law, ImageConvert and its operator
+          shall not be liable for any indirect, incidental, special, consequential,
+          or punitive damages arising from your use of the Site, including but not
+          limited to loss of data, loss of files, or loss of profits.
+        </p>
+
+        <h3>6. Third-Party Content and Advertising</h3>
+        <p>
+          The Site may display advertisements and links to third-party websites.
+          We are not responsible for the content, privacy practices, or accuracy of
+          any third-party site. Your interactions with advertisers are solely
+          between you and the advertiser.
+        </p>
+
+        <h3>7. Intellectual Property</h3>
+        <p>
+          The Site's design, code, branding, and original written content are the
+          property of ImageConvert and are protected by applicable copyright and
+          intellectual property laws. You may not copy, reproduce, or redistribute
+          substantial portions of the Site without written permission.
+        </p>
+
+        <h3>8. Changes to These Terms</h3>
+        <p>
+          We may update these Terms from time to time. Updated Terms will be posted
+          on this page with a revised "Last updated" date. Continued use of the
+          Site after changes are posted constitutes acceptance of the new Terms.
+        </p>
+
+        <h3>9. Governing Law</h3>
+        <p>
+          These Terms are governed by the laws applicable in the operator's
+          jurisdiction, without regard to conflict of law principles. Any disputes
+          shall be resolved in the courts of that jurisdiction.
+        </p>
+
+        <h3>10. Contact</h3>
+        <p>
+          For questions about these Terms, please visit the
+          <a href="contact.html" style="color: var(--primary); font-weight: 700;">Contact page</a>.
+        </p>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <a href="index.html" class="logo">ImageConvert</a>
+        <p>Free online image and video conversion tools.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html#image-converter">Image Converter</a>
+        <a href="index.html#video-converter">Video Converter</a>
+        <a href="index.html#formats">Formats</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 ImageConvert. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const themeButton = document.getElementById("themeButton");
+      const themeIcon = document.getElementById("themeIcon");
+
+      function updateThemeIcon() {
+        if (!themeIcon) return;
+        const current = document.documentElement.className;
+        if (current === "dark") themeIcon.textContent = "☀";
+        else if (current === "light") themeIcon.textContent = "☾";
+        else themeIcon.textContent = "◐";
+      }
+
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark" || savedTheme === "light") {
+        document.documentElement.className = savedTheme;
+      }
+      updateThemeIcon();
+
+      if (themeButton) {
+        themeButton.addEventListener("click", () => {
+          const current = document.documentElement.className;
+          if (current === "dark") {
+            document.documentElement.className = "light";
+            localStorage.setItem("theme", "light");
+          } else {
+            document.documentElement.className = "dark";
+            localStorage.setItem("theme", "dark");
+          }
+          updateThemeIcon();
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>

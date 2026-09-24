@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — ImageConvert</title>
+
+  <script src="coi-serviceworker.js"></script>
+
+  <meta name="description" content="Contact ImageConvert for feedback, bug reports, or questions about the free online image and video converter.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" aria-label="ImageConvert Home">ImageConvert</a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#image-converter">Image Converter</a>
+        <a href="index.html#video-converter">Video Converter</a>
+        <a href="index.html#formats">Formats</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+
+      <button id="themeButton" class="theme-button" type="button" aria-label="Toggle theme">
+        <span id="themeIcon">◐</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="content-section" style="padding-top: 90px;">
+      <div class="container">
+
+        <span class="section-label">CONTACT</span>
+        <h2>Contact ImageConvert</h2>
+
+        <p>
+          Have a question, found a bug, or want to suggest a new feature or format?
+          We'd like to hear from you. Use the email below and we'll get back to you
+          as soon as possible.
+        </p>
+
+        <h3>Email</h3>
+        <p>
+          <strong>imageconvert.contact@gmail.com</strong>
+        </p>
+        <p>
+          Please include as much detail as possible — for example, which format you
+          were converting from and to, what browser you used, and what happened.
+          That helps us reproduce and fix issues faster.
+        </p>
+
+        <h3>What We Can Help With</h3>
+        <p>
+          Bug reports, format support requests, general questions about how the
+          converter works, and feedback about the design or usability of the site.
+        </p>
+
+        <h3>What We Cannot Help With</h3>
+        <p>
+          We cannot recover lost files, repair corrupted images or videos, or provide
+          technical support for third-party software. ImageConvert processes files
+          locally in your browser, so we never have access to your files.
+        </p>
+
+        <h3>Response Time</h3>
+        <p>
+          This is an independent project, so replies may take a few days. We read
+          every message, even if we can't always respond immediately.
+        </p>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <a href="index.html" class="logo">ImageConvert</a>
+        <p>Free online image and video conversion tools.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html#image-converter">Image Converter</a>
+        <a href="index.html#video-converter">Video Converter</a>
+        <a href="index.html#formats">Formats</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 ImageConvert. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const themeButton = document.getElementById("themeButton");
+      const themeIcon = document.getElementById("themeIcon");
+
+      function updateThemeIcon() {
+        if (!themeIcon) return;
+        const current = document.documentElement.className;
+        if (current === "dark") themeIcon.textContent = "☀";
+        else if (current === "light") themeIcon.textContent = "☾";
+        else themeIcon.textContent = "◐";
+      }
+
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark" || savedTheme === "light") {
+        document.documentElement.className = savedTheme;
+      }
+      updateThemeIcon();
+
+      if (themeButton) {
+        themeButton.addEventListener("click", () => {
+          const current = document.documentElement.className;
+          if (current === "dark") {
+            document.documentElement.className = "light";
+            localStorage.setItem("theme", "light");
+          } else {
+            document.documentElement.className = "dark";
+            localStorage.setItem("theme", "dark");
+          }
+          updateThemeIcon();
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>

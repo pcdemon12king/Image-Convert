@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — ImageConvert</title>
+
+  <script src="coi-serviceworker.js"></script>
+
+  <meta name="description" content="Learn about ImageConvert, a free browser-based image and video converter built to process files locally without uploading them to a server.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" aria-label="ImageConvert Home">ImageConvert</a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#image-converter">Image Converter</a>
+        <a href="index.html#video-converter">Video Converter</a>
+        <a href="index.html#formats">Formats</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+
+      <button id="themeButton" class="theme-button" type="button" aria-label="Toggle theme">
+        <span id="themeIcon">◐</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="content-section" style="padding-top: 90px;">
+      <div class="container">
+
+        <span class="section-label">ABOUT</span>
+        <h2>About ImageConvert</h2>
+
+        <p>
+          ImageConvert is a free, browser-based tool for converting images and videos
+          between popular formats. It was built with a simple idea in mind: converting
+          a file should not require installing software, creating an account, or
+          uploading your personal files to a stranger's server.
+        </p>
+
+        <h3>Why ImageConvert Exists</h3>
+        <p>
+          Most online converters work the same way. You upload your file to a remote
+          server, wait for it to be processed, and then download the result. That
+          approach has two problems. First, it means your private photos and videos
+          leave your device and sit on someone else's infrastructure. Second, it
+          often comes with file size limits, watermarks, daily caps, or forced
+          sign-ups.
+        </p>
+        <p>
+          ImageConvert takes a different approach. All conversion happens directly
+          inside your browser using modern web technologies. Your files never leave
+          your device. There is no upload step, no queue, and no server receiving
+          your data.
+        </p>
+
+        <h3>How It Works Under the Hood</h3>
+        <p>
+          For image conversion, ImageConvert uses <strong>wasm-vips</strong> — a
+          WebAssembly build of the libvips image processing library. This lets the
+          browser handle formats like JPG, PNG, WebP, GIF, BMP, TIFF, AVIF and ICO
+          with the same engine trusted by professional image pipelines.
+        </p>
+        <p>
+          For video conversion, ImageConvert uses <strong>FFmpeg</strong> compiled to
+          WebAssembly. FFmpeg is the industry-standard multimedia framework used by
+          countless applications and services. Running it in the browser means you
+          can convert between MP4, WebM, MOV, AVI, MKV and GIF without installing
+          anything.
+        </p>
+
+        <h3>What You Can Do With It</h3>
+        <p>
+          You can convert photos for the web, prepare images for a design project,
+          change video formats for compatibility with a specific device, create GIFs
+          from short clips, or simply shrink files by adjusting quality settings.
+          The tool is designed to be straightforward: choose a file, pick an output
+          format, adjust quality if needed, and download the result.
+        </p>
+
+        <h3>Privacy by Design</h3>
+        <p>
+          Because conversion happens locally in your browser, ImageConvert does not
+          collect, store, or transmit your files. There is no backend processing
+          queue, no cloud storage, and no account system. What you convert stays on
+          your device.
+        </p>
+
+        <h3>Who Built This</h3>
+        <p>
+          ImageConvert is an independent project built by a developer who wanted a
+          clean, fast, no-nonsense converter that respects user privacy. The site is
+          hosted on GitHub Pages and the entire tool runs client-side.
+        </p>
+
+        <h3>Get in Touch</h3>
+        <p>
+          If you have feedback, found a bug, or want to suggest a new format,
+          visit the <a href="contact.html" style="color: var(--primary); font-weight: 700;">Contact page</a>.
+        </p>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <a href="index.html" class="logo">ImageConvert</a>
+        <p>Free online image and video conversion tools.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html#image-converter">Image Converter</a>
+        <a href="index.html#video-converter">Video Converter</a>
+        <a href="index.html#formats">Formats</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 ImageConvert. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const themeButton = document.getElementById("themeButton");
+      const themeIcon = document.getElementById("themeIcon");
+
+      function updateThemeIcon() {
+        if (!themeIcon) return;
+        const current = document.documentElement.className;
+        if (current === "dark") themeIcon.textContent = "☀";
+        else if (current === "light") themeIcon.textContent = "☾";
+        else themeIcon.textContent = "◐";
+      }
+
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark" || savedTheme === "light") {
+        document.documentElement.className = savedTheme;
+      }
+      updateThemeIcon();
+
+      if (themeButton) {
+        themeButton.addEventListener("click", () => {
+          const current = document.documentElement.className;
+          if (current === "dark") {
+            document.documentElement.className = "light";
+            localStorage.setItem("theme", "light");
+          } else {
+            document.documentElement.className = "dark";
+            localStorage.setItem("theme", "dark");
+          }
+          updateThemeIcon();
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
