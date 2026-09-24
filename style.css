@@ -84,14 +84,16 @@ img, video { max-width: 100%; display: block; }
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid var(--border);
-  background: rgba(245, 247, 251, 0.72);
+  background: color-mix(in srgb, var(--bg-secondary) 72%, transparent);
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
   transition: background var(--transition), border-color var(--transition);
 }
 
 html.dark .navbar,
-body.dark-mode .navbar { background: rgba(7, 10, 18, 0.72); }
+body.dark-mode .navbar {
+  background: color-mix(in srgb, var(--bg-secondary) 72%, transparent);
+}
 
 .nav-container {
   min-height: 76px;

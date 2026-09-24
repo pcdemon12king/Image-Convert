@@ -50,10 +50,6 @@ const videoQualityValue = document.getElementById("videoQualityValue");
 const videoConvertButton = document.getElementById("videoConvertButton");
 const videoResetButton = document.getElementById("videoResetButton");
 
-/* THEME */
-const themeButton = document.getElementById("themeButton");
-const themeIcon = document.getElementById("themeIcon");
-
 /* =========================================================
    STATE
 ========================================================= */
@@ -768,41 +764,6 @@ async function cleanupFFmpegFiles(files) {
       console.warn("Could not delete FFmpeg file:", file);
     }
   }
-}
-
-/* =========================================================
-   THEME
-========================================================= */
-function updateThemeIcon() {
-  if (!themeIcon) return;
-  const current = document.documentElement.className;
-  if (current === "dark") themeIcon.textContent = "☀";
-  else if (current === "light") themeIcon.textContent = "☾";
-  else themeIcon.textContent = "◐";
-}
-
-function applySavedTheme() {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark" || savedTheme === "light") {
-    document.documentElement.className = savedTheme;
-  }
-  updateThemeIcon();
-}
-
-applySavedTheme();
-
-if (themeButton) {
-  themeButton.addEventListener("click", () => {
-    const current = document.documentElement.className;
-    if (current === "dark") {
-      document.documentElement.className = "light";
-      localStorage.setItem("theme", "light");
-    } else {
-      document.documentElement.className = "dark";
-      localStorage.setItem("theme", "dark");
-    }
-    updateThemeIcon();
-  });
 }
 
 /* =========================================================
